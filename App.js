@@ -49,6 +49,7 @@ import Header from './9Grid/Header'
 
 
 import Sample3 from './9Grid/Sample3';
+import Dp2 from './DP/Dp2';
 
 
 function HomeScreen({navigation}) {
@@ -104,6 +105,8 @@ function App() {
 
       <Stack.Screen options={{ headerShown: false }} name="Dpone" component={Dpone} />
       <Stack.Screen options={{ headerShown: false }} name="DpTwo" component={DpTwo} />
+      <Stack.Screen options={{ headerShown: false }} name="Dp2" component={Dp2} />
+
         <Stack.Screen options={{ headerShown: false }} name="Instalogin" component={Instalogin} />
         {/* <Stack.Screen options={{ headerShown: false }} name="Flogin" component={Flogin} /> */}
         <Stack.Screen options={{ headerShown: false }} name="Mylogin" component={Mylogin} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -9,6 +9,7 @@ import {
   ImageBackground,
   Image,
   ScrollView,
+  Alert
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Header from '../src/Components/Header';
@@ -16,6 +17,8 @@ import Header from '../src/Components/Header';
 import Icontwo from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 import ImagePicker, {openPicker} from 'react-native-image-crop-picker';
+import storage from '@react-native-firebase/storage';
+
 // import RNFetchBlob from 'rn-fetch-blob'
 // import { PESDK } from 'react-native-photoeditorsdk';
 
@@ -38,6 +41,10 @@ const Dpdesign = () => {
 
 const Dpcreateone = ({navigation}) => {
   const Ifont = 'Poplin';
+const [image, setImage] = useState(null);
+const [uploading, setUploading] = useState(false);
+const [transferred, setTransferred] = useState(0);
+
 
   const openPicker = () => {
     ImagePicker.openPicker({
@@ -55,16 +62,36 @@ const Dpcreateone = ({navigation}) => {
         CropGuidelinesColor :"red",
         // aspectRatio:1*3,
         includeBase64: true,
+        width: (400),
+         height: (400),
+        compressImageMaxWidth:(300),
+        compressImageMaxHeight:(300),
+         }).then((image) => {
+                              console.log(image.path);
+                              navigation.navigate('Dp2', {img : image})
+                            //  const  imageUri = image.path;
+                              
+                            //   setImage(imageUri)
+                            })};
+                            
 
+      // const submitPost = async () => {
+      
+      //   const uploadUri = image;
+      //   let fileName = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
+      //   setUploading(true);
 
-        //  width: (400),
-    // height: (400),
-    // compressImageMaxWidth:(300),
-    // compressImageMaxHeight:(300),
-    }).then(image => {navigation.navigate ("DpTwo" ,{ img : image }); })}
-  // console.log(image);
+      //   try{
+      //     await storage().ref(fileName).putFile(uploadUri);
+      //     setUploading(false);
+      //     Alert.alert('Image Uploaded')
 
-  
+      //   } catch(e) {
+      //     console.log(e);
+      //   }
+      //   setImage(null);
+      // }
+
   return (
     <View
       style={{
@@ -104,6 +131,7 @@ const Dpcreateone = ({navigation}) => {
             justifyContent: 'center',
             paddingTop: 47,
           }}>
+          
           <Image
             style={{width: 153, width: 153}}
             source={require('../Frame/Ell.png')}
@@ -185,8 +213,11 @@ const Dpcreateone = ({navigation}) => {
           </Text>
         
         </TouchableOpacity>
+       
         
       </View>
+      
+
     </View>
   );
 };
@@ -253,4 +284,13 @@ export default Dpcreateone;
 //     }
 // }
 
-
+// <TouchableOpacity 
+//       onPress={submitPost}
+//       style={{backgroundColor:'black', marginTop:'5%', width:'30%', alignSelf:'center'}}>
+//       <Text style={{color:'white', alignSelf:'center'}}>Upload</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity 
+//       onPress={getImage}
+//       style={{backgroundColor:'black', marginTop:'5%', width:'30%', alignSelf:'center'}}>
+//       <Text style={{color:'white', alignSelf:'center'}}>Download</Text>
+//       </TouchableOpacity>

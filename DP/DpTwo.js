@@ -475,9 +475,7 @@
 //   }
 // };
 
-
-
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -488,23 +486,35 @@ import {
   ImageBackground,
   Image,
   ScrollView,
+  PermissionsAndroid,
+  Platform,
+  Alert,
 } from 'react-native';
+import {captureRef} from 'react-native-view-shot';
+import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Header from '../9Grid/Header';
-
-import Icontwo from 'react-native-vector-icons/Feather';
+import { exportComponentAsJPEG} from 'react-component-export-image';
+import download from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 // import MaskedView from '@react-native-community/masked-view';
 
 import borderframe from './index';
 import Allbadge from './badge';
 
+// import Download from '../9Grid/Download';
+// import RNFetchBlob from 'rn-fetch-blob';
+
+const Remote = () => {
+  props.setCurrbadge(props.id);
+};
+
 const Dpbadge = props => {
   return (
     // <ScrollView>
     <>
       <TouchableOpacity
-        onPress={() => props.setCurrbadge(props.id)}
+        onPress={Remote}
         style={{
           flexDirection: 'row',
           justifyContent: 'center',
@@ -526,7 +536,7 @@ const Dpbadge = props => {
             borderRadius: 200,
           }}>
           <Image
-            style={{height: '100%', width: '100%',}}
+            style={{height: '100%', width: '100%'}}
             source={props.badgepic}
           />
         </View>
@@ -534,7 +544,6 @@ const Dpbadge = props => {
     </>
   );
 };
-
 
 // lfjhnldffhlfdlflfglnfdl
 const Dpborderon = props => {
@@ -544,15 +553,11 @@ const Dpborderon = props => {
         onPress={() => props.setCurrframe(props.id)}
         style={{
           flexDirection: 'row',
-          // justifyContent: 'center',
-          // alignItems: 'center',
+          
           marginLeft: 12,
           borderRadius: 20,
           height: 350,
           width: 350,
-          // top:10
-          // borderWidth:2
-          // bottom:60,
           
         }}>
         {props.Currframe == props.id ? (
@@ -563,7 +568,7 @@ const Dpborderon = props => {
               left: 2,
               height: 305,
               width: 305,
-              top:30,
+              top: 30,
               borderRadius: 200,
               // borderWidth:2
             }}
@@ -571,7 +576,7 @@ const Dpborderon = props => {
           />
         ) : null}
         <Image
-          style={{height: 310, width: 310, borderRadius: 20,top:30}}
+          style={{height: 310, width: 310, borderRadius: 20, top: 30}}
           source={props.bframe}
         />
       </TouchableOpacity>
@@ -613,30 +618,163 @@ const Dpborder = props => {
         />
       </TouchableOpacity>
     </>
-    
   );
 };
 
 
+
 const DpTwo = ({route, navigation}) => {
+  const viewRef = useRef();
   const items = route.params;
+  // const componentRef = useRef();
   const [userpic, setuserpic] = useState({
-        uri: `data:${items.img.mime};base64,${items.img.data}`,
-      });
-     
+    uri: `data:${items.img.mime};base64,${items.img.data}`,
+  });
+
   const [Currframe, setCurrframe] = useState(0);
   const [Currbadge, setCurrbadge] = useState(0);
   const [Option, setOption] = useState(true);
+
+  const getPermissionAndroid = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        {
+          title: 'Image Download Permission',
+          message: 'Your permission is required to save images to your device',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        return true;
+      }
+      Alert.alert(
+        '',
+        'Your permission is required to save images to your device',
+        [{text: 'OK', onPress: () => {}}],
+        {cancelable: false},
+      );
+    } catch (err) {
+      // handle error as you please
+      console.log('err', err);
+    }
+  };
+
+  const downloadImage = async () => {
+    try {
+      // react-native-view-shot caputures component
+      const uri = await captureRef(viewRef, {
+        format: 'png',
+        quality: 1.0,
+      });
+
+      if (Platform.OS === 'android') {
+        const granted = await getPermissionAndroid();
+        
+        if (!granted) {
+          return Alert.alert('Storage Permission Not Granted');
+        }
+      }
+
+      const image = CameraRoll.save(uri, 'photo');
+      if (image) {
+        Alert.alert(
+          '',
+          'Image saved successfully.',
+          [{text: 'OK', onPress: () => {}}],
+          {cancelable: false},
+        );
+      }
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
   // const userpic = {Mypic};
+  // const REMOTE_IMAGE_PATH =
+  //  'https://firebasestorage.googleapis.com/v0/b/insta-d76ce.appspot.com/o/d54085ba-e8ba-4693-8915-6e3cb759c701.jpg?alt=media&token=ae88a953-8142-4ef7-a7ee-2cd332d854cc';
+  // const checkPermission = async () => {
+  //   // Function to check the platform
+  //   // If iOS then start downloading
+  //   // If Android then ask for permission
+
+  //   if (Platform.OS === 'ios') {
+  //     downloadImage();
+  //   } else {
+  //     try {
+  //       const granted = await PermissionsAndroid.request(
+  //         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+  //         {
+  //           title: 'Storage Permission Required',
+  //           message: 'App needs access to your storage to download Photos',
+  //         },
+  //       );
+  //       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+  //         // Once user grant the permission start downloading
+  //         console.log('Storage Permission Granted.');
+  //         downloadImage();
+  //       } else {
+  //         // If permission denied then show alert
+  //         alert('Storage Permission Not Granted');
+  //       }
+  //     } catch (err) {
+  //       // To handle permission related exception
+  //       console.warn(err);
+  //     }
+  //   }
+  // };
+
+  // const downloadImage = () => {
+  //   // Main function to download the image
+
+  //   // To add the time suffix in filename
+  //   let date = new Date();
+  //   // Image URL which we want to download
+  //   let image_URL = REMOTE_IMAGE_PATH;
+  //   // Getting the extention of the file
+  //   let ext = getExtention(image_URL);
+  //   ext = '.' + ext[0];
+  //   // Get config and fs from RNFetchBlob
+  //   // config: To pass the downloading related options
+  //   // fs: Directory path where we want our image to download
+  //   const {config, fs} = RNFetchBlob;
+  //   let PictureDir = fs.dirs.PictureDir;
+  //   let options = {
+  //     fileCache: true,
+  //     addAndroidDownloads: {
+  //       // Related to the Android only
+  //       useDownloadManager: true,
+  //       notification: true,
+  //       path:
+  //         PictureDir +
+  //         '/image_' +
+  //         Math.floor(date.getTime() + date.getSeconds() / 2) +
+  //         ext,
+  //       description: 'Image',
+  //     },
+  //   };
+  //   config(options)
+  //     .fetch('GET', image_URL)
+  //     .then(res => {
+  //       // Showing alert after successful downloading
+  //       console.log('res -> ', JSON.stringify(res));
+  //       alert('Image Downloaded Successfully.');
+  //     });
+  // };
+
+  // const getExtention = filename => {
+  //   // To get the file extension
+  //   return /[.]/.exec(filename) ? /[^.]+$/.exec(filename) : undefined;
+  // };
 
   return (
-    <View
+    <View 
       style={{
         backgroundColor: '#F5E2F4',
         height: Dimensions.get('window').height,
         borderWidth: 1,
         borderColor: '#F3E6FA',
-
       }}>
       <LinearGradient
         colors={['#ffffff', '#ECDCF7']}
@@ -647,7 +785,7 @@ const DpTwo = ({route, navigation}) => {
         </View>
       </LinearGradient>
 
-      <View
+      <View 
         style={{
           // width: '100%',
           // height: 356,
@@ -655,9 +793,7 @@ const DpTwo = ({route, navigation}) => {
           justifyContent: 'center',
           marginTop: '5%',
         }}>
-
-
-          {/* image background white space */}
+        {/* image background white space */}
         <View
           style={{
             // height: 400,
@@ -667,10 +803,12 @@ const DpTwo = ({route, navigation}) => {
             flexDirection: 'row',
             justifyContent: 'center',
           }}>
-          <Image style={{height: 400,width:335,position:'absolute'}} source={userpic} />
+          <Image
+            style={{height: 400, width: 335, position: 'absolute'}}
+            source={userpic}
+          />
           {/* <View style={{borderWidth:5,borderRadius:150,borderColor:'red',position:'absolute',height:300,width:300,alignSelf:'center'}}></View> */}
-          
-          
+
           {/* {Allbadge.map((item, index) => {
               return (
                 <>
@@ -687,10 +825,9 @@ const DpTwo = ({route, navigation}) => {
               );
             })} */}
         </View>
-        
       </View>
       {/* hfndsjfjdjfndsnfndsn */}
-<View 
+      <View    
         style={{
           flexDirection: 'row',
           alignItems: 'center',
@@ -698,14 +835,15 @@ const DpTwo = ({route, navigation}) => {
           // borderRadius: 6,
           height: 350,
           width: '100%',
+          // backgroundColor:'red'
           // marginTop: 60,
           // marginBottom: 18,
           // elevation: 5,
-        }}> 
-        
+        }}>
         {Option == true ? (
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
-            <TouchableOpacity 
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        
+            <TouchableOpacity
               onPress={() => setCurrframe(0)}
               // style={{
               //   flexDirection: 'row',
@@ -717,9 +855,8 @@ const DpTwo = ({route, navigation}) => {
               //   width: 58,
               //   borderWidth: 3,
               //   borderColor: '#000',
-              // }}> 
-              >
-              
+              // }}>
+            >
               {/* <View
                  style={{
                   position: 'absolute',
@@ -731,28 +868,33 @@ const DpTwo = ({route, navigation}) => {
                   borderBottomWidth: 3,
                 }}
               /> */}
-           </TouchableOpacity>
-{borderframe.map((item, index) => {
+            </TouchableOpacity>
+            {borderframe.map((item, index) => {
               return (
                 <>
-                  <Dpborderon
-                    key={index}
-                    id={index + 1}
-                    Currframe={Currframe}
-                    setCurrframe={e => {
-                      setCurrframe(e);
-                    }}
-                    userpic={userpic}
-                    bframe={item}
-                  />
+            
+                          <Dpborderon
+                          key={index}
+                          id={index + 1}
+                          Currframe={Currframe}
+                          setCurrframe={e => {
+                            setCurrframe(e);
+                          }}
+                          userpic={userpic}
+                          bframe={item}
+                        />
+              
+          
+                  
                 </>
               );
             })}
+          
           </ScrollView>
         ) : (
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
-            <TouchableOpacity 
-               style={{
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <TouchableOpacity
+              style={{
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -762,11 +904,9 @@ const DpTwo = ({route, navigation}) => {
                 width: 350,
                 // borderWidth: 3,
                 // borderColor: '#000',
-              }}> 
-              
-              
-              <View/>
-            </TouchableOpacity> 
+              }}>
+              <View />
+            </TouchableOpacity>
             {/* {Allbadge.map((item, index) => {
               return (
                 <>
@@ -782,12 +922,12 @@ const DpTwo = ({route, navigation}) => {
                 </>
               );
             })} */}
-             </ScrollView>
+          </ScrollView>
         )}
       </View>
-            {/* hfidfdfidsfdshgfgdgfids */}
+      {/* hfidfdfidsfdshgfgdgfids */}
 
-{/* nichwala Frame */}
+      {/* nichwala Frame */}
       <View
         style={{
           flexDirection: 'row',
@@ -872,7 +1012,7 @@ const DpTwo = ({route, navigation}) => {
                 }}
               />
             </TouchableOpacity>
-            
+
             {Allbadge.map((item, index) => {
               return (
                 <>
@@ -892,7 +1032,7 @@ const DpTwo = ({route, navigation}) => {
         )}
       </View>
 
-{/* nichewala Frame */}
+      {/* nichewala Frame */}
 
       <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
         <TouchableOpacity
@@ -900,13 +1040,30 @@ const DpTwo = ({route, navigation}) => {
           style={{width: '45%'}}>
           <Framebtn Option={Option} />
         </TouchableOpacity>
-
+        
         <TouchableOpacity
           onPress={() => setOption(false)}
           style={{width: '45%'}}>
           <Badgebtn Option={Option} />
         </TouchableOpacity>
+
+        
       </View>
+
+      <TouchableOpacity 
+      onPress={downloadImage}
+      style={{backgroundColor: '#ad4fcc',
+                position:'absolute',
+               
+                marginTop:'2%',
+                marginLeft:'70%',
+                              padding: 5,
+                        
+                              width:'5%',
+                              borderRadius: 10}}>
+                <Text style={{color:'white', fontSize:15, 
+                fontWeight:'bold',alignSelf:'center'}}>Save</Text>
+              </TouchableOpacity>
     </View>
     // </ScrollView>
   );
@@ -954,12 +1111,9 @@ const Framebtn = props => {
                   justifyContent: 'center',
                   borderRadius: 82 / 2,
                 }}></LinearGradient>
-                
             </View>
-            
           </LinearGradient>
-          <Text style={{color:'#DA3150'}}>Frames</Text>
-         
+          <Text style={{color: '#DA3150'}}>Frames</Text>
         </View>
       </>
     );
@@ -971,7 +1125,7 @@ const Framebtn = props => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            color:'black'
+            color: 'black',
           }}>
           <View
             style={{
@@ -1004,6 +1158,7 @@ const Framebtn = props => {
           <Text style={{textAlign: 'center', color: '#797979', fontSize: 13}}>
             Frames
           </Text>
+          
         </View>
       </>
     );
@@ -1036,12 +1191,10 @@ const Badgebtn = props => {
               source={require('../Badges/badge1.png')}
             />
           </View>
-
-          
         </View>
         <Text style={{textAlign: 'center', color: '#797979', fontSize: 13}}>
-            Badges & Emojis
-          </Text>
+          Badges & Emojis
+        </Text>
       </>
     );
   } else {
@@ -1100,7 +1253,6 @@ const Badgebtn = props => {
               </LinearGradient>
             </View>
           </LinearGradient>
-
         </View>
       </>
     );
