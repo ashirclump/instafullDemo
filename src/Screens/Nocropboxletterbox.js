@@ -1,9 +1,11 @@
-import React, { Component, useState } from 'react';
-import { View, StyleSheet, Text, TextInput, TouchableOpacity, Dimensions, ImageBackground, Image, AppRegistry, PermissionsAndroid, } from 'react-native';
+import React, { Component, useState, useRef } from 'react';
+import { View, StyleSheet, Text, TextInput, TouchableOpacity, Dimensions, 
+    Alert,ImageBackground, Image, AppRegistry, PermissionsAndroid, } from 'react-native';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 import Header from '../Components/Header';
-
+import {captureRef} from 'react-native-view-shot';
+import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 
 import Icontwo from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
@@ -21,6 +23,7 @@ import Slider from '@react-native-community/slider';
 
 
 const Nocropboxletterbox = ({ props, route, navigation }) => {
+    const viewRef = useRef();
     let items = route.params
     const [Mypic, setMypic] = useState({uri: `data:${items.img.mime};base64,${items.img.data}`});
     // var check = items.img.data;
@@ -61,50 +64,7 @@ const Nocropboxletterbox = ({ props, route, navigation }) => {
 
 // }
         
-    checkPermision = async () => {
-      if (Platform.OS === 'ios') {
-        this.downloadImage();
-      } else {
-        try {
-          const granted = await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-            {
-              title: 'Storage Permission Required',
-              message: 'App needs access to your storage to download photos',
-            },
-          );
-          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            console.log('Storage permission Granted');
-            downloadImage();
-          } else {
-            console.log('Storage permission not Granted');
-          }
-        } catch (error) {
-          console.log('errro', error);
-        }
-      }
-    };
-  
-     downloadImage = () => {
-      let date = new Date();
-      const { fs} = RNFetchBlob;
-      const dirs = RNFetchBlob.fs.dirs;
-      let PictureDir = fs.dirs.PictureDir;
-  
-      var path =  PictureDir + '/image_' +
-      Math.floor(date.getTime() + date.getSeconds() / 2) +
-      '.png';
-      console.log("path :-",path,"dirs :-",dirs)
-  
-  
-      RNFetchBlob.fs.writeFile(path, items.img.data, 'base64').then(res => {
-        console.log('File : ', res);
-        alert('Image downloaded successfully.');
-      }).catch((error) => {
-           alert(JSON.stringify(error));
-         });
-  
-    }
+   
 
 //     const imageDate = items.img.data;
 // const imagePath = `${RNFS.TemporaryDirectoryPath}image.jpg`;
@@ -130,6 +90,65 @@ const Nocropboxletterbox = ({ props, route, navigation }) => {
 
     const [Slidervalue, setSlidervalue] = useState(100);
 
+    // get permission on android
+  const getPermissionAndroid = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        {
+          title: 'Image Download Permission',
+          message: 'Your permission is required to save images to your device',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        return true;
+      }
+      Alert.alert(
+        '',
+        'Your permission is required to save images to your device',
+        [{text: 'OK', onPress: () => {}}],
+        {cancelable: false},
+      );
+    } catch (err) {
+      // handle error as you please
+      console.log('err', err);
+    }
+  };
+
+  // download image
+  const downloadImage = async () => {
+    try {
+      // react-native-view-shot caputures component
+      const uri = await captureRef(viewRef, {
+        format: 'png',
+        quality: 0.8,
+      });
+
+      if (Platform.OS === 'android') {
+        const granted = await getPermissionAndroid();
+        if (!granted) {
+          return;
+        }
+      }
+
+      // cameraroll saves image
+      const image = CameraRoll.save(uri, 'photo');
+      if (image) {
+        Alert.alert(
+          '',
+          'Image saved successfully.',
+          [{text: 'OK', onPress: () => {}}],
+          {cancelable: false},
+        );
+      }
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
+
     return (
         <View style={{ backgroundColor: '#EFE7FC', height: Dimensions.get('window').height }}>
 
@@ -139,7 +158,7 @@ const Nocropboxletterbox = ({ props, route, navigation }) => {
                 </View>
             </LinearGradient>
 
-            <View style={{ backgroundColor: 'red', width: '100%', height: '55%', marginTop: '15%' }}>
+            <View  ref={viewRef} style={{ backgroundColor: 'red', width: '100%', height: '55%', marginTop: '15%' }}>
                 <Image source={Mypic} style={{ height: "100%", width: "100%" }} />
             </View>
 
@@ -201,7 +220,7 @@ const Nocropboxletterbox = ({ props, route, navigation }) => {
 
             <View style={{ position: 'absolute', bottom: 25, width: '100%', flexDirection: 'row', justifyContent: 'center' }}>
 
-                <TouchableOpacity onPress={checkPermision}
+                <TouchableOpacity onPress={downloadImage}
                  style={{ alignItems: 'center', borderRadius: 15, backgroundColor: '#3672E9', width: '70%', height: 59, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={{ fontFamily: `${Ifont}`, color: '#BFF4FF', fontSize: 18, fontWeight: '500' }}>Save</Text>
                 </TouchableOpacity>

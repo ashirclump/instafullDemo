@@ -162,14 +162,14 @@ const Toolkit = (props) => {
     return (
         <>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', paddingBottom: 20 }}>
-                <Card navigation={props.navigation} navItem={"Dpsaverone"} img={require("../../assets/Homepi/hme12.png")} title="9 grid" />
-                <Card navigation={props.navigation} navItem={"Upload"} img={require("../../assets/Homepi/hme2.png")} title="Tap hear Bio" />
+                <Card navigation={props.navigation} navItem={"Upload"} img={require("../../assets/Homepi/hme12.png")} title="9 grid" />
+                <Card navigation={props.navigation} navItem={""} img={require("../../assets/Homepi/hme2.png")} title="Tap hear Bio" />
                 <Card navigation={props.navigation} navItem={"Dpone"} img={require("../../assets/Homepi/hme3.png")} title="DP Creator" />
                 <Card navigation={props.navigation} navItem={"Sapceadder"} img={require("../../assets/Homepi/hme4.png")} title="Space Adder" />
                 <Card navigation={props.navigation} navItem={"Creativefonts"} img={require("../../assets/Homepi/hme5.png")} title="Creative font" />
                 <Card navigation={props.navigation} navItem={"SwipePick"} img={require("../../assets/Homepi/hme6.png")} title="Swipe Photo" />
                 <Card navigation={props.navigation} navItem={"Uploadimage"} img={require("../../assets/Homepi/hme7.png")} title="No crop post" />
-                <Card navigation={props.navigation} navItem={"Dpone"} img={require("../../assets/Homepi/hme8.png")} title="Repost" />
+                <Card navigation={props.navigation} navItem={"Dpsaverone"} img={require("../../assets/Homepi/hme8.png")} title="Repost" />
             </View>
 
         </>

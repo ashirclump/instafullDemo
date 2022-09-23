@@ -64,8 +64,8 @@ const [transferred, setTransferred] = useState(0);
         includeBase64: true,
         width: (400),
          height: (400),
-        compressImageMaxWidth:(300),
-        compressImageMaxHeight:(300),
+        // compressImageMaxWidth:(300),
+        // compressImageMaxHeight:(300),
          }).then((image) => {
                               console.log(image.path);
                               navigation.navigate('Dp2', {img : image})
