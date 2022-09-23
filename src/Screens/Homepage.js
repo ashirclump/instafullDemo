@@ -11,15 +11,11 @@ import Dpsaverhead from '../Components/Dpsaverhead';
 import Hometab from '../Components/Hometab';
 import Test from '../Components/Test';
 
-// import { useContext } from 'react';
-// import NoteContext from '../../Context/NoteContext';
-
 
 
 
 const Card = (props) => {
-    // const {globalfont} = useContext(NoteContext);
-    // const [Ifont, setIfont] = globalfont;
+    
 
     const Ifont = 'Poplin';
 
@@ -93,7 +89,7 @@ const Homepage = ({ navigation, route }) => {
                 <LinearGradient colors={['#ffffff', '#ECDCF7']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.24)', borderBottomLeftRadius: 24, borderBottomRightRadius: 24, paddingHorizontal: 13, paddingTop: 35, paddingBottom: 14 }}>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
-                        <Text style={{ color: '#000', fontSize: 24, width: 245, marginLeft: 6, lineHeight: 27, height: 75 }}>What will you creat today ?</Text>
+                        <Text style={{ color: '#000', fontSize: 24, width: 245, marginLeft: 6, lineHeight: 27, height: 75}}>What will you create today ?</Text>
                         <TouchableOpacity onPress={()=>handleLougout()}>
                             <Image
                                 style={{ height: 52, width: 52, marginRight: 4 }}
@@ -162,8 +158,8 @@ const Toolkit = (props) => {
     return (
         <>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', paddingBottom: 20 }}>
-                <Card navigation={props.navigation} navItem={"Dpsaverone"} img={require("../../assets/Homepi/hme12.png")} title="9 grid" />
-                <Card navigation={props.navigation} navItem={"Upload"} img={require("../../assets/Homepi/hme2.png")} title="Tap hear Bio" />
+                <Card navigation={props.navigation} navItem={"Upload"} img={require("../../assets/Homepi/hme12.png")} title="9 grid" />
+                <Card navigation={props.navigation} navItem={"Tapherebio"} img={require("../../assets/Homepi/hme2.png")} title="Tap hear Bio" />
                 <Card navigation={props.navigation} navItem={"Dpone"} img={require("../../assets/Homepi/hme3.png")} title="DP Creator" />
                 <Card navigation={props.navigation} navItem={"Sapceadder"} img={require("../../assets/Homepi/hme4.png")} title="Space Adder" />
                 <Card navigation={props.navigation} navItem={"Creativefonts"} img={require("../../assets/Homepi/hme5.png")} title="Creative font" />

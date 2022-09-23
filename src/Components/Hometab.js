@@ -26,6 +26,20 @@ const Hometab = props => {
     borderRadius: 23,
     marginTop: 30,
   });
+  const [Normal, setNormal] = useState({
+    height: 179,
+    width: 118,
+    marginLeft: 14,
+    borderRadius: 23,
+    marginTop: 30,
+  });
+  const [No, setNo] = useState({
+    height: 179,
+    width: 118,
+    marginLeft: 14,
+    borderRadius: 23,
+    marginTop: 30,
+  });
 
   const [Activeitem, setActiveitem] = useState(0);
 
@@ -42,12 +56,12 @@ const Hometab = props => {
     },
     {
       key: 2,
-      itemstyle: Normalitem,
+      itemstyle: No,
       imgpath: require('../../assets/Homepi/hme11.png'),
     },
     {
       key: 3,
-      itemstyle: Normalitem,
+      itemstyle: Normal,
       imgpath: require('../../assets/Homepi/hme14.png'),
     },
   ]);
