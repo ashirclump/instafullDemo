@@ -9,7 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 // import { useContext } from 'react';
 // import NoteContext from '../../Context/NoteContext';
 import ImagePicker, { openPicker } from 'react-native-image-crop-picker';
-
+import ShareableReactImage from '../Components/ShareableReactImage';
 const Uploadimage = ({ navigation }) => {
 
     // const {globalfont} = useContext(NoteContext);
@@ -21,7 +21,7 @@ const Uploadimage = ({ navigation }) => {
         ImagePicker.openPicker({
             width: 300,
             height: 400,
-            cropping: true,
+            // cropping: true,
             includeBase64: true
         }).then(image => {
 
@@ -43,7 +43,7 @@ const Uploadimage = ({ navigation }) => {
                     <Header navigation={navigation} title="No Crop Post" />
                 </View>
             </LinearGradient>
-
+<ShareableReactImage/>
             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                 <View style={{ height: 130, width: 130, marginTop: 200 }}>
                     <Image

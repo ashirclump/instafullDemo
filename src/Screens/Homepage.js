@@ -163,7 +163,7 @@ const Toolkit = (props) => {
         <>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', paddingBottom: 20 }}>
                 <Card navigation={props.navigation} navItem={"Upload"} img={require("../../assets/Homepi/hme12.png")} title="9 grid" />
-                <Card navigation={props.navigation} navItem={""} img={require("../../assets/Homepi/hme2.png")} title="Tap hear Bio" />
+                <Card navigation={props.navigation} navItem={"Tapherebio"} img={require("../../assets/Homepi/hme2.png")} title="Tap hear Bio" />
                 <Card navigation={props.navigation} navItem={"Dpone"} img={require("../../assets/Homepi/hme3.png")} title="DP Creator" />
                 <Card navigation={props.navigation} navItem={"Sapceadder"} img={require("../../assets/Homepi/hme4.png")} title="Space Adder" />
                 <Card navigation={props.navigation} navItem={"Creativefonts"} img={require("../../assets/Homepi/hme5.png")} title="Creative font" />

@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
-import { View, StyleSheet, Text, ScrollView, TextInput, TouchableOpacity, FlatList, Dimensions } from 'react-native';
+import { View, StyleSheet, Text, Alert,ScrollView, TextInput, TouchableOpacity, FlatList, Dimensions } from 'react-native';
 import Header from '../Components/Header';
 import LinearGradient from 'react-native-linear-gradient';
 import Clipboard from '@react-native-clipboard/clipboard';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // import { useContext } from 'react';
 // import NoteContext from '../../Context/NoteContext';
 
 const Card = (props) => {
+    const win = Dimensions.get('window');
    // const {globalfont} = useContext(NoteContext);
     // const [Ifont, setIfont] = globalfont;
 
@@ -15,7 +17,7 @@ const Card = (props) => {
 
     const jewelStyle = function () {
         return {
-            fontSize: 12,
+            fontSize: 14,
             color: '#FFFFFF',
             marginLeft: 16,
             fontFamily: props.fontname,
@@ -26,10 +28,10 @@ const Card = (props) => {
         <View style={{ backgroundColor: 'black', height: 40, marginTop: 17, flexDirection: 'row', alignItems: 'center', borderRadius: 5 }}>
             <View>
                 <Text style={jewelStyle()}>Try this new font in new way</Text>
-                {/* <Text style={jewelStyle()}>{Ifont}</Text> */}
+                
             </View>
 
-            {/* <TouchableOpacity onPress={()=>{setIfont(props.fontname)}} style={[{ position: 'absolute', top: 12, right: 11 }, { fontFamily: props.fontname }]}> */}
+           
             <TouchableOpacity onPress={()=>{props.setTryfont(props.fontname)}} style={[{ position: 'absolute', top: 12, right: 11 }, { fontFamily: props.fontname }]}>
                 <View style={{ backgroundColor: '#FFE600', height: 17, width: 55, borderRadius: 3, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <Text style={{ fontFamily: 'Rambla-Regular', color: '#000000', fontSize: 7 }}>Try this font</Text>
@@ -44,13 +46,34 @@ const Creativefonts = ({navigation}) => {
 
     // const {globalfont} = useContext(NoteContext);
     // const [Ifont, setIfont] = globalfont;
+    const Alertt = () =>
+    Alert.alert(
+        
+      "Copied to clipboard",
+    //   [
+    //     {
+    //       text: "Cancel",
+    //       onPress: () => console.log("Cancel Pressed"),
+    //       style: "cancel"
+    //     },
+    //     { text: "OK", onPress: () => console.log("OK Pressed") }
+    //   ]
+    );
 
+    const onPress = () => {
+        // Alertt();
+        copyIt();
+      };
     const Ifont = 'Poplin';
 
     const [Tryfont, setTryfont] = useState(Ifont);
 
     const [text, onChangeText] = React.useState("");
-
+    const copyIt = ()=> Clipboard.setString(courseName)
+    const [courseName, setCourseName] = useState ("")
+const onChangName = (value) => {
+  setCourseName(value)
+}
     const items = [
         { key: "1", fontname: "Rajdhani-Regular" },
         { key: "2", fontname: "Rambla-Regular" },
@@ -68,6 +91,7 @@ const Creativefonts = ({navigation}) => {
 
 
     return (
+        <SafeAreaView>
         <View style={{ height: Dimensions.get('window').height }}>
             <LinearGradient colors={['#ffffff', '#ECDCF7']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ borderBottomWidth: .5, borderBottomColor: 'rgba(255, 255, 255, 0.24)' }}>
                 <Header navigation={navigation} title="Creative Fonts" />
@@ -79,8 +103,8 @@ const Creativefonts = ({navigation}) => {
                     <View style={{ paddingLeft: 25, paddingRight: 30, marginTop: 28.5 }}>
                         <View style={{ backgroundColor: '#000', height: 40, flexDirection: 'row', alignItems: 'center', borderRadius: 5 }}>
                             <View style={{ width: '100%', paddingHorizontal: 16 }}>
-                                {/* <TextInput placeholder="Write something cool" placeholderTextColor="#fff" style={{ borderRadius: 5, width: '100%', color: '#fff', fontSize: 12, fontFamily: 'Poppins', fontWeight: '300', }} ></TextInput> */}
-                                <TextInput value={text} onChangeText={onChangeText} placeholder="Write something cool" placeholderTextColor="#fff" style={{ borderRadius: 5, width: '100%', color: '#fff', fontSize: 12, fontFamily: `${ Tryfont }`, fontWeight: '300', }} ></TextInput>
+                                
+                                <TextInput value={courseName} onChangeText={onChangName} placeholder="Write something cool" placeholderTextColor="#fff" style={{ borderRadius: 5, width: '100%', color: '#fff', fontSize: 12, fontFamily: `${ Tryfont }`, fontWeight: '300', }} ></TextInput>
                             </View>
                         </View>
                     </View>
@@ -103,11 +127,11 @@ const Creativefonts = ({navigation}) => {
                         </ScrollView>
                     </View>
 
-                    <View style={{ position: 'absolute', bottom: 80, width: '100%' }}>
+                    <View style={{ position: 'absolute', bottom: 90, width: '100%' }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
                             <View style={{ backgroundColor: '#3672E9', height: 59, borderRadius: 15, paddingHorizontal: 93, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                                {/* <TouchableOpacity onPress={()=>{setIfont(Tryfont)}}> */}
-                                <TouchableOpacity onPress={()=>{Clipboard.setString(text)}}>
+      
+                                <TouchableOpacity onPress={onPress}>
                                     <Text style={{ fontFamily: `${ Ifont }`, fontSize: 18, color: '#fff', width: '100%', fontWeight: '400' }}>Copy Text</Text>
                                 </TouchableOpacity>
                             </View>
@@ -116,6 +140,7 @@ const Creativefonts = ({navigation}) => {
                 </View>
             </LinearGradient>
         </View>
+        </SafeAreaView>
     );
 }
 

@@ -1,96 +1,123 @@
-import React, { Component, useState, useRef } from 'react';
-import { View, StyleSheet, Text, TextInput, TouchableOpacity, Dimensions, 
-    Alert,ImageBackground, Image, AppRegistry, PermissionsAndroid, } from 'react-native';
+import React, {Component, useState, useRef} from 'react';
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Dimensions,
+  Alert,
+  ImageBackground,
+  Image,
+  AppRegistry,
+  PermissionsAndroid,
+  ScrollView
+} from 'react-native';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 import Header from '../Components/Header';
 import {captureRef} from 'react-native-view-shot';
-import { CameraRoll } from '@react-native-camera-roll/camera-roll';
+import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 
 import Icontwo from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 import RNFetchBlob from 'rn-fetch-blob';
 
-
-
-import { RadialGradient } from 'react-native-svg';
-
+import {RadialGradient} from 'react-native-svg';
 
 import Slider from '@react-native-community/slider';
-
+import FrameBox from '../Components/FrameBox';
 // import { useContext } from 'react';
 // import NoteContext from '../../Context/NoteContext';
 
-
-const Nocropboxletterbox = ({ props, route, navigation }) => {
-    const viewRef = useRef();
-    let items = route.params
-    const [Mypic, setMypic] = useState({uri: `data:${items.img.mime};base64,${items.img.data}`});
-    // var check = items.img.data;
-
-//     checkPermision = async () => {
-//           if (Platform.OS === 'ios') {
-//             this.downloadImage();
-//           } else {
-//             try {
-//               const granted = await PermissionsAndroid.request(
-//                 PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-//                 {
-//                   title: 'Storage Permission Required',
-//                   message: 'App needs access to your storage to download photos',
-//                 },
-//               );
-//               if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-//                 console.log('Storage permission Granted');
-//                 downloadImage();
-//               } else {
-//                 console.log('Storage permission not Granted');
-//               }
-//             } catch (error) {
-//               console.log('errro', error);
-//             }
-//           }
-//         };
-// downloadImage = () => {
-    
-//         var Base64Code = check //base64Image is my image base64 string
-        
-//         const dirs = RNFetchBlob.fs.dirs;
-        
-//         var path = dirs.DCIMDir + "/image.png";
-        
-//         RNFetchBlob.fs.writeFile(path, Base64Code[1], 'base64')
-//         .then((res) => {console.log("File : ", res)});
-
-// }
-        
-   
-
-//     const imageDate = items.img.data;
-// const imagePath = `${RNFS.TemporaryDirectoryPath}image.jpg`;
-
-// RNFS.writeFile(imagePath, imageDate, 'base64')
-//     .then(() => console.log('Image converted to jpg and saved at ' + imagePath));
+const Nocropboxletterbox = ({props, route, navigation}) => {
+  const viewRef = useRef();
+  let items = route.params;
+  const win= Dimensions.get('window')
+  const [Mypic, setMypic] = useState({
+    uri: `data:${items.img.mime};base64,${items.img.data}`,
+  });
 
 
+  const [cropped,setCropped] = useState(0);
+  const [frames,setFrames] = useState(PutFrame1);
+  const [big,setBig]= useState();
+  const [badg,setBadg] = useState();
+  const [Option, setOption] = useState(true);
+  const PutFrame1 = () => {
+    setFrames(require('../../FrameBox/Rectangle128.png'));
+  }
+  const PutFrame2 = () => {
+    setFrames(require('../../FrameBox/Rectangle129.png'));
+  }
+  const PutFrame3 = () => {
+    setFrames(require('../../FrameBox/Rectangle130.png'));
+  }
+  const PutFrame4 = () => {
+    setFrames(require('../../FrameBox/Rectangle131.png'));
+  }
+  const PutFrame5 = () => {
+    setFrames(require('../../FrameBox/Rectangle132.png'));
+  }
+  const PutFrame6 = () => {
+    setFrames(require('../../FrameBox/Rectangle133.png'));
+  }
+  const PutFrame7 = () => {
+    setFrames(require('../../FrameBox/Rectangle134.png'));
+  }
+  const PutFrame8 = () => {
+    setFrames(require('../../FrameBox/Rectangle135.png'));
+  }
+  const PutFrame9 = () => {
+    setFrames(require('../../FrameBox/Rectangle136.png'));
+  }
+ 
 
-    const Ifont = 'Poplin';
-    const defaultimg = require('../../assets/standman.png')
-    const blackline = require('../../assets/pics/blackline.png')
-    const blackcircle = require('../../assets/pics/blackcircle.png')
+  const Blur = ()=> {
+    const [Slidor, setSlidor] = useState(100);
+return (
+      
+  <View
+  style={{flexDirection: 'row', alignItems: 'center',marginBottom:40}}>
+  <Slider
+    style={{width: '65%', height: 10, marginLeft: 45}}
+    minimumValue={50}
+    maximumValue={2}
+    minimumTrackTintColor="red"
+    maximumTrackTintColor="black"
+    onValueChange={value => {
+      setSlidor(value);
+    }}
+    trackImage={blackline}
+    thumbImage={blackcircle}
+    inverted={true}
+  />
+  <Text style={{fontSize: 11, fontWeight: '500', color: 'red'}}>
+    {parseInt(Slidor)}%
+  </Text>
+  
 
-    // setMypic({uri: `data:${items.img.mime};base64,${items.img.data}`})
-    // console.log("props value are = ", Mypic)
+</View>
+ 
+    )
+  };
+ 
 
-    const printvalue = () => {
-        // console.log("props value are = ", Mypic)
-        // setMypic({uri: `data:${items.img.mime};base64,${items.img.data}`})
-    }
+  const Ifont = 'Poplin';
+  const defaultimg = require('../../assets/standman.png');
+  const blackline = require('../../assets/pics/blackline.png');
+  const blackcircle = require('../../assets/pics/blackcircle.png');
+
+  const [Slidervalue, setSlidervalue] = useState(100);
+  const [Slidor, setSlidor] = useState(200);
+  const [Counter, setCounter] = useState(0);
+  const [shouldShow, setShouldShow] = useState(false);
+  const [should, setShould] = useState(false);
+  const [Letter, setLetter] = useState(true);
+  const [er, seter] = useState(true);
 
 
-    const [Slidervalue, setSlidervalue] = useState(100);
-
-    // get permission on android
+  // get permission on android
   const getPermissionAndroid = async () => {
     try {
       const granted = await PermissionsAndroid.request(
@@ -149,99 +176,236 @@ const Nocropboxletterbox = ({ props, route, navigation }) => {
   };
 
 
-    return (
-        <View style={{ backgroundColor: '#EFE7FC', height: Dimensions.get('window').height }}>
 
-            <LinearGradient colors={['#ffffff', '#ECDCF7']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
-                <View style={styles.card}>
-                    <Header navigation={navigation} title="No Crop Post (letter box)" />
-                </View>
-            </LinearGradient>
+  return (
+    <ScrollView
+      style={{
+        backgroundColor: '#EFE7FC',
+        // height:win.height/20,
+      }}>
+      <LinearGradient
+        colors={['#ffffff', '#ECDCF7']}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}>
+       
+          <Header navigation={navigation} title="No Crop Post (letter box)" />
+        
+      </LinearGradient>
 
-            <View  ref={viewRef} style={{ backgroundColor: 'red', width: '100%', height: '55%', marginTop: '15%' }}>
-                <Image source={Mypic} style={{ height: "100%", width: "100%" }} />
-            </View>
-
-            
-
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
-                <Slider
-                    style={{ width: '65%', height: 40, marginLeft: 45 }}
-                    minimumValue={100}
-                    maximumValue={0}
-                    minimumTrackTintColor="black"
-                    maximumTrackTintColor="black"
-                    // maximumTrackImage={blackline}
-                    // minimumTrackImage={blackline}
-                    onValueChange={(value) => { setSlidervalue(value) }}
-                    trackImage={blackline}
-                    thumbImage={blackcircle}
-                    inverted={true}
-                />
-                <Text style={{fontSize:11, fontWeight:'500', color:'#000'}}>{parseInt(Slidervalue)}%</Text>
-            </View>
-
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 45 }}>
-                <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <Image
-                        style={{ tintColor: '#000', height: 22, width: 22 }}
-                        source={require('../../assets/pics/letterbox.png')}
-                    />
-                    <Text style={{ color: '#000', marginTop: 7, fontSize: 9, fontWeight: '500' }}>Letterbox</Text>
-                </View>
-
-                <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <Image
-                        style={{ tintColor: '#877D88', height: 22, width: 22 }}
-                        source={require('../../assets/pics/blur.png')}
-                    />
-                    <Text style={{ marginTop: 7, fontSize: 9, fontWeight: '500' }}>Blur</Text>
-                </View>
-
-                <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <Image
-                        style={{ tintColor: '#877D88', height: 22, width: 22 }}
-                        source={require('../../assets/pics/background.png')}
-                    />
-                    <Text style={{ marginTop: 7, fontSize: 9, fontWeight: '500' }}>Background</Text>
-                </View>
-
-                <View style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <Image
-                        style={{ tintColor: '#877D88', height: 22, width: 22 }}
-                        source={require('../../assets/pics/crop.png')}
-                    />
-                    <Text style={{ marginTop: 7, fontSize: 9, fontWeight: '500' }}>Crop</Text>
-                </View>
-
-            </View>
-
-
-
-            <View style={{ position: 'absolute', bottom: 25, width: '100%', flexDirection: 'row', justifyContent: 'center' }}>
-
-                <TouchableOpacity onPress={downloadImage}
-                 style={{ alignItems: 'center', borderRadius: 15, backgroundColor: '#3672E9', width: '70%', height: 59, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontFamily: `${Ifont}`, color: '#BFF4FF', fontSize: 18, fontWeight: '500' }}>Save</Text>
-                </TouchableOpacity>
-            </View>
-
+      <View
+        style={{
+       
+          width: win.width/1,
+          height: win.height/1.8,
+          marginTop: '10%',
+          
+          backgroundColor:'#ECDCF7',
+          
+        }}
+        ref={viewRef}>
+        {shouldShow?
+        <Image
+          source={Mypic}
+          style={{height: win.height/1.8, width: win.width/1}}
+          // resizeMode="contain"
+          blurRadius={Slidervalue}
+        />:null
+        }
+        <View style={{height: win.height/1.8,width:win.width/1,position:'absolute',
+       
+       
+      }} >
+        <Image source={frames} style={{width: win.width/1,height:win.height/1.8,position:'absolute',backgroundColor:shouldShow ? null : frames}}/>
         </View>
-    );
-}
+
+        <View style={{height: win.height/1.8,width:win.width/1,position:'absolute',
+       
+        // aspectRatio: Slidor
+      }} >
+        <Image
+          source={Mypic}
+          style={{height: win.height/1.8,width:Slidor,
+          marginLeft:win.width/6,
+          backgroundColor:"white"
+          // aspectRatio: Slidor
+        }}
+          // resizeMode="contain"
+          blurRadius={0}
+        />
+        </View>
+        </View>
+        {shouldShow ? (
+          <View
+            style={{flexDirection: 'row', alignItems: 'center', marginBottom: 20}}>
+           
+            <Slider
+              style={{width: '65%', height: 40, marginLeft: 45}}
+              minimumValue={100}
+              maximumValue={0}
+              minimumTrackTintColor="black"
+              maximumTrackTintColor="black"
+              onValueChange={value => {
+                setSlidervalue(value);
+              }}
+              trackImage={blackline}
+              thumbImage={blackcircle}
+              inverted={true}
+            /> 
+           <Text style={{fontSize: 11, fontWeight: '500', color: '#000'}}>
+              {parseInt(Slidervalue)}%
+            </Text>
+          </View> ) : null}
+          
+           {should ? ( <FrameBox  Put1={PutFrame1} Put={setFrames}  Put2={PutFrame2} Put3={PutFrame3} Put4={PutFrame4} Put5={PutFrame5} 
+            Put6={PutFrame6} Put7={PutFrame7} Put8={PutFrame8} Put9={PutFrame9}/> ) :  null}
+          
+            {Letter?( <View
+              style={{flexDirection: 'row', alignItems: 'center',marginBottom:40}}>
+              <Slider
+                style={{width: '65%', height: 10, marginLeft: 45}}
+                minimumValue={200}
+                maximumValue={300}
+                minimumTrackTintColor="black"
+                maximumTrackTintColor="black"
+                onValueChange={value => {
+                  setSlidor(value);
+                }}
+                trackImage={blackline}
+                thumbImage={blackcircle}
+                inverted={false}
+              />
+              <Text style={{fontSize: 11, fontWeight: '500', color: 'red'}}>
+                {parseInt(Slidor)}%
+              </Text>
+              
+           
+            </View>):null}
+
+         
+
+<View>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingHorizontal: 45,
+          marginTop:win.height/20
+        }}>
+        <TouchableOpacity onPress={() => [setLetter(!Letter),setShouldShow(false),setShould(false),setFrames(),setSlidervalue()]}
+          style={{
+            
+          
+          }}>
+          <Image
+            style={{tintColor: Letter ? '#000' : '#877D88',  height: 22, width: 22}}
+            source={require('../../assets/pics/letterbox.png')}
+          />
+          <Text
+            style={{
+              color: '#000',
+              marginTop: 7,
+              fontSize: 9,
+              fontWeight: '500',
+            }}>
+            Letterbox
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => [setShouldShow(!shouldShow),setShould(false),setFrames(),setLetter(false)]}
+          style={{
+            
+           
+          
+          }}>
+          <Image
+            style={{tintColor: shouldShow ? '#000' : '#877D88',  height: 22, width: 22}}
+            source={require('../../assets/pics/blur1.png')}
+          />
+          <Text style={{marginTop: 7, fontSize: 9, fontWeight: '500',color:"#000"}}>
+            Blur
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => [setShould(!should),setShouldShow(false),setLetter(false)]}
+          style={{
+           
+          
+          }}>
+          <Image
+            style={{tintColor: should ? '#000' : '#877D88',  height: 22, width: 22}}
+            source={require('../../assets/pics/background.png')}
+          />
+          <Text style={{marginTop: 7, fontSize: 9, fontWeight: '500'}}>
+            Background
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+           
+          
+          }}>
+          <Image
+            style={{tintColor: '#877D88', height: 22, width: 22}}
+            source={require('../../assets/pics/crop.png')}
+          />
+          <Text style={{marginTop: 7, fontSize: 9, fontWeight: '500'}}>
+            Crop
+          </Text>
+        </TouchableOpacity>
+      </View>
+      </View>
+
+      <View
+        style={{
+          
+          width: '100%',
+          flexDirection: 'row',
+          justifyContent: 'center',
+        }}>
+        <TouchableOpacity
+        
+          style={{
+            
+            borderRadius: 15,
+            backgroundColor: '#3672E9',
+            width: '70%',
+            height: 49,
+          margin:10,
+            alignItems: 'center',
+            justifyContent: 'center',
+            // marginTop:win.height
+          }}
+          onPress={downloadImage}>
+          <Text
+            style={{
+              fontFamily: `${Ifont}`,
+              color: '#BFF4FF',
+              fontSize: 18,
+              fontWeight: '500',
+            }}>
+            Save
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  );
+};
 
 var styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginLeft: 10,
-        marginRight: 10,
-        alignItems: 'stretch',
-        justifyContent: 'center',
-    },
+  container: {
+    flex: 1,
+    marginLeft: 10,
+    marginRight: 10,
+    alignItems: 'stretch',
+    justifyContent: 'center',
+  },
 });
 
 export default Nocropboxletterbox;
 
-
-
-
+// <Text style={{height:25,width:25,backgroundColor:"red",marginLeft:20}}></Text>
+//     <Text style={{height:25,width:25,backgroundColor:"blue",marginLeft:20}}></Text>
+//     <Text style={{height:25,width:25,backgroundColor:"yellow",marginLeft:20}}></Text>
+//     <Text style={{height:25,width:25,backgroundColor:"green",marginLeft:20}}></Text>
+//     <Text style={{height:25,width:25,backgroundColor:"black",marginLeft:20}}></Text>

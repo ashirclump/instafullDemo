@@ -294,3 +294,23 @@ export default Dpcreateone;
 //       style={{backgroundColor:'black', marginTop:'5%', width:'30%', alignSelf:'center'}}>
 //       <Text style={{color:'white', alignSelf:'center'}}>Download</Text>
 //       </TouchableOpacity>
+
+// import { View, Text, Image } from 'react-native'
+// import React from 'react'
+
+// const Dpone = () => {
+//   return (
+   
+//     <View style={{width:'100%', height:'100%',flexDirection:'row'}}>
+//     <View style={{width:'50%',height:'50%', backgroundColor:'red'}}>
+//      <Image style={{width:'100%',height:'100%',scal}} source={require('../Pic/boy.png')}/>
+//     </View>
+//     <View style={{width:'50%',height:'50%', backgroundColor:'red'}}>
+//      <Image style={{width:'100%',height:'100%'}} source={require('../Pic/boy.png')}/>
+//     </View>
+   
+//     </View>
+//   )
+// }
+
+// export default Dpone
