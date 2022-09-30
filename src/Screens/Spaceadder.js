@@ -35,7 +35,7 @@ const Card = (props) => {
             {/* <TouchableOpacity onPress={()=>{setIfont(props.fontname)}} style={[{ position: 'absolute', top: 12, right: 11 }, { fontFamily: props.fontname }]}> */}
             <TouchableOpacity onPress={() => { props.setTryfont(props.fontname) }} style={[{ position: 'absolute', top: 12, right: 11 }, { fontFamily: props.fontname }]}>
                 <View style={{ backgroundColor: '#FFE600', height: 17, width: 55, borderRadius: 3, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ fontFamily: 'Rambla-Regular', color: '#000000', fontSize: 7 }}>Try this font</Text>
+                    <Text style={{ fontFamily: 'Ranchers-Regular', color: '#000000', fontSize: 7 }}>Try this font</Text>
                 </View>
             </TouchableOpacity>
         </View>

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, {Component, useState, useRef} from 'react';
+=======
+import React, {Component, useState} from 'react';
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 import {
   View,
   StyleSheet,
@@ -6,18 +10,27 @@ import {
   TextInput,
   TouchableOpacity,
   Dimensions,
+<<<<<<< HEAD
   Alert,
+=======
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
   ImageBackground,
   Image,
   AppRegistry,
   PermissionsAndroid,
+<<<<<<< HEAD
   ScrollView
+=======
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 import Header from '../Components/Header';
+<<<<<<< HEAD
 import {captureRef} from 'react-native-view-shot';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
+=======
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 
 import Icontwo from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
@@ -31,6 +44,7 @@ import FrameBox from '../Components/FrameBox';
 // import NoteContext from '../../Context/NoteContext';
 
 const Nocropboxletterbox = ({props, route, navigation}) => {
+<<<<<<< HEAD
   const viewRef = useRef();
   let items = route.params;
   const win= Dimensions.get('window')
@@ -157,8 +171,72 @@ return (
         const granted = await getPermissionAndroid();
         if (!granted) {
           return;
+=======
+  let items = route.params;
+  const [Mypic, setMypic] = useState({
+    uri: `data:${items.img.mime};base64,${items.img.data}`,
+  });
+  // var check = items.img.data;
+
+  //     checkPermision = async () => {
+  //           if (Platform.OS === 'ios') {
+  //             this.downloadImage();
+  //           } else {
+  //             try {
+  //               const granted = await PermissionsAndroid.request(
+  //                 PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+  //                 {
+  //                   title: 'Storage Permission Required',
+  //                   message: 'App needs access to your storage to download photos',
+  //                 },
+  //               );
+  //               if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+  //                 console.log('Storage permission Granted');
+  //                 downloadImage();
+  //               } else {
+  //                 console.log('Storage permission not Granted');
+  //               }
+  //             } catch (error) {
+  //               console.log('errro', error);
+  //             }
+  //           }
+  //         };
+  // downloadImage = () => {
+
+  //         var Base64Code = check //base64Image is my image base64 string
+
+  //         const dirs = RNFetchBlob.fs.dirs;
+
+  //         var path = dirs.DCIMDir + "/image.png";
+
+  //         RNFetchBlob.fs.writeFile(path, Base64Code[1], 'base64')
+  //         .then((res) => {console.log("File : ", res)});
+
+  // }
+
+  checkPermision = async () => {
+    if (Platform.OS === 'ios') {
+      this.downloadImage();
+    } else {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+          {
+            title: 'Storage Permission Required',
+            message: 'App needs access to your storage to download photos',
+          },
+        );
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          console.log('Storage permission Granted');
+          downloadImage();
+        } else {
+          console.log('Storage permission not Granted');
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
         }
+      } catch (error) {
+        console.log('errro', error);
       }
+<<<<<<< HEAD
 
       // cameraroll saves image
       const image = CameraRoll.save(uri, 'photo');
@@ -174,9 +252,50 @@ return (
       console.log('error', error);
     }
   };
+=======
+    }
+  };
 
+  downloadImage = () => {
+    let date = new Date();
+    const {fs} = RNFetchBlob;
+    const dirs = RNFetchBlob.fs.dirs;
+    let PictureDir = fs.dirs.PictureDir;
 
+    var path =
+      PictureDir +
+      '/image_' +
+      Math.floor(date.getTime() + date.getSeconds() / 2) +
+      '.png';
+    console.log('path :-', path, 'dirs :-', dirs);
 
+    RNFetchBlob.fs
+      .writeFile(path, items.img.data, 'base64')
+      .then(res => {
+        console.log('File : ', res);
+        alert('Image downloaded successfully.');
+      })
+      .catch(error => {
+        alert(JSON.stringify(error));
+      });
+  };
+
+  //     const imageDate = items.img.data;
+  // const imagePath = `${RNFS.TemporaryDirectoryPath}image.jpg`;
+
+  // RNFS.writeFile(imagePath, imageDate, 'base64')
+  //     .then(() => console.log('Image converted to jpg and saved at ' + imagePath));
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
+
+  const Ifont = 'Poplin';
+  const defaultimg = require('../../assets/standman.png');
+  const blackline = require('../../assets/pics/blackline.png');
+  const blackcircle = require('../../assets/pics/blackcircle.png');
+
+  // setMypic({uri: `data:${items.img.mime};base64,${items.img.data}`})
+  // console.log("props value are = ", Mypic)
+
+<<<<<<< HEAD
   return (
     <ScrollView
       style={{
@@ -284,11 +403,87 @@ return (
          
 
 <View>
+=======
+  const printvalue = () => {
+    // console.log("props value are = ", Mypic)
+    // setMypic({uri: `data:${items.img.mime};base64,${items.img.data}`})
+  };
+
+  const [Slidervalue, setSlidervalue] = useState(100);
+
+  return (
+    <View
+      style={{
+        backgroundColor: '#EFE7FC',
+        height: Dimensions.get('window').height,
+      }}>
+      <LinearGradient
+        colors={['#ffffff', '#ECDCF7']}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}>
+        <View style={styles.card}>
+          <Header navigation={navigation} title="No Crop Post (letter box)" />
+        </View>
+      </LinearGradient>
+
+      <View
+        style={{
+       
+          width: '100%',
+          height: '55%',
+          marginTop: '15%',
+        }}>
+        <Image
+          source={Mypic}
+          style={{height: '100%', width: '100%', marginTop:0}}
+          resizeMode="cover"
+          blurRadius={Slidervalue}
+        />
+        <View
+        style={{
+          
+          width: '100%',
+          height: '100%',
+      marginLeft:90,
+       
+          position:'absolute'
+        }}>
+        <Image
+          source={Mypic}
+          style={{height: "100%", width: "100%", aspectRatio:0.5}}
+        //   resizeMode="stretch"
+         
+        />
+        </View>
+      </View>
+
+      <View
+        style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
+        <Slider
+          style={{width: '65%', height: 40, marginLeft: 45}}
+          minimumValue={100}
+          maximumValue={5}
+          minimumTrackTintColor="black"
+          maximumTrackTintColor="black"
+          onValueChange={value => {
+            setSlidervalue(value);
+          }}
+          trackImage={blackline}
+          thumbImage={blackcircle}
+          inverted={true}
+        />
+        <Text style={{fontSize: 11, fontWeight: '500', color: '#000'}}>
+          {parseInt(Slidervalue)}%
+        </Text>
+      </View>
+
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
       <View
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
           paddingHorizontal: 45,
+<<<<<<< HEAD
           marginTop:win.height/20
         }}>
         <TouchableOpacity onPress={() => [setLetter(!Letter),setShouldShow(false),setShould(false),setFrames(),setSlidervalue()]}
@@ -298,6 +493,17 @@ return (
           }}>
           <Image
             style={{tintColor: Letter ? '#000' : '#877D88',  height: 22, width: 22}}
+=======
+        }}>
+        <View
+          style={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Image
+            style={{tintColor: '#000', height: 22, width: 22}}
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
             source={require('../../assets/pics/letterbox.png')}
           />
           <Text
@@ -309,6 +515,7 @@ return (
             }}>
             Letterbox
           </Text>
+<<<<<<< HEAD
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => [setShouldShow(!shouldShow),setShould(false),setFrames(),setLetter(false)]}
@@ -333,17 +540,54 @@ return (
           }}>
           <Image
             style={{tintColor: should ? '#000' : '#877D88',  height: 22, width: 22}}
+=======
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Image
+            style={{tintColor: '#877D88', height: 22, width: 22}}
+            source={require('../../assets/pics/blur.png')}
+          />
+          <Text style={{marginTop: 7, fontSize: 9, fontWeight: '500'}}>
+            Blur
+          </Text>
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Image
+            style={{tintColor: '#877D88', height: 22, width: 22}}
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
             source={require('../../assets/pics/background.png')}
           />
           <Text style={{marginTop: 7, fontSize: 9, fontWeight: '500'}}>
             Background
           </Text>
+<<<<<<< HEAD
         </TouchableOpacity>
 
         <TouchableOpacity
           style={{
            
           
+=======
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
           }}>
           <Image
             style={{tintColor: '#877D88', height: 22, width: 22}}
@@ -352,18 +596,28 @@ return (
           <Text style={{marginTop: 7, fontSize: 9, fontWeight: '500'}}>
             Crop
           </Text>
+<<<<<<< HEAD
         </TouchableOpacity>
       </View>
+=======
+        </View>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
       </View>
 
       <View
         style={{
+<<<<<<< HEAD
           
+=======
+          position: 'absolute',
+          bottom: 25,
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
           width: '100%',
           flexDirection: 'row',
           justifyContent: 'center',
         }}>
         <TouchableOpacity
+<<<<<<< HEAD
         
           style={{
             
@@ -377,6 +631,19 @@ return (
             // marginTop:win.height
           }}
           onPress={downloadImage}>
+=======
+          onPress={checkPermision}
+          style={{
+            alignItems: 'center',
+            borderRadius: 15,
+            backgroundColor: '#3672E9',
+            width: '70%',
+            height: 59,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
           <Text
             style={{
               fontFamily: `${Ifont}`,
@@ -388,7 +655,11 @@ return (
           </Text>
         </TouchableOpacity>
       </View>
+<<<<<<< HEAD
     </ScrollView>
+=======
+    </View>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
   );
 };
 
@@ -403,9 +674,12 @@ var styles = StyleSheet.create({
 });
 
 export default Nocropboxletterbox;
+<<<<<<< HEAD
 
 // <Text style={{height:25,width:25,backgroundColor:"red",marginLeft:20}}></Text>
 //     <Text style={{height:25,width:25,backgroundColor:"blue",marginLeft:20}}></Text>
 //     <Text style={{height:25,width:25,backgroundColor:"yellow",marginLeft:20}}></Text>
 //     <Text style={{height:25,width:25,backgroundColor:"green",marginLeft:20}}></Text>
 //     <Text style={{height:25,width:25,backgroundColor:"black",marginLeft:20}}></Text>
+=======
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96

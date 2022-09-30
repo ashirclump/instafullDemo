@@ -8,7 +8,10 @@ import { ScrollView,
   Modal,
   ImageBackground,
   TouchableOpacity,
+<<<<<<< HEAD
   Alert,
+=======
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
   TouchableWithoutFeedback, } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import X from 'react-native-vector-icons/Feather';
@@ -18,6 +21,7 @@ import Left from 'react-native-vector-icons/AntDesign';
 
 import ImagePicker ,{openCamera, openPicker} from 'react-native-image-crop-picker';
 
+<<<<<<< HEAD
 
 
 const Screen = (props) => {
@@ -31,12 +35,25 @@ const Screen = (props) => {
 
 
  
+=======
+const Screen = (props) => {
+  const {navigation,closeCallback,closeTouch}=props;
+  const [pop, setpop] = useState([]);  
+  // const closeCallback={() => setPop(false)};
+  // const closeTouch={() => setPop(false)};
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
   const [uri, setUri] = useState(props.source?.uri || undefined);
   const pickPicture = () => {
     
 
     ImagePicker.openCamera({
+<<<<<<< HEAD
       
+=======
+      // width: 300,
+      // height: 300,
+      // cropping: true,
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
     }).then((image) => {
       setUri(image.path);
       props.onChange?.(image);
@@ -45,24 +62,37 @@ const Screen = (props) => {
 
   const openPicker = () => {
   ImagePicker.openPicker({
+<<<<<<< HEAD
     width: 300,
     height: 300,
+=======
+    // width: 300,
+    // height: 300,
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
     // cropping: true,
   }).then((image) => {
     setUri(image.path);
     props.onChange?.(image);
   });
+<<<<<<< HEAD
   };
 
  
 
+=======
+};
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
     // const Ifont = 'Poplin';
     
     return (
         <View>
              {/* <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 16, marginBottom: 13 }}> */}
              <View style={[styles.row]}>
+<<<<<<< HEAD
         <TouchableOpacity >
+=======
+        <TouchableOpacity>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
           <View style={{
            
             // borderColor: `${props.bc}`,
@@ -80,6 +110,7 @@ const Screen = (props) => {
             width: 400}}>
             {props.title}
             </Text>
+<<<<<<< HEAD
             <TouchableOpacity 
             onPress={openPicker}
             // onPress={() => Alert.alert(
@@ -95,6 +126,9 @@ const Screen = (props) => {
             //   { cancelable: true }
             // )}
             >
+=======
+            <TouchableOpacity  onPress={() => setpop(true)}>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
             <Image
             style={styles.avatar}
             {...props}
@@ -114,7 +148,58 @@ const Screen = (props) => {
 
                 {/* </View> */}
 
+<<<<<<< HEAD
               
+=======
+                <TouchableWithoutFeedback >
+                <Modal animationType="slide" 
+                dismiss={pop}
+            transparent={true} 
+            visible={pop}
+            onRequestClose={() => setpop(false)}
+            onBackdropPress={closeCallback}
+            onBackButtonPress={closeTouch}
+            // onPressOut={() => setpop(false)}
+            closeCallback={() => setpop(false)}
+            closeTouch={() => setpop(false)}
+           
+            >
+
+              <View style={styles.modalcontainer}>
+                <View style={styles.modalview}>
+                 
+                  <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
+                  <TouchableOpacity onPress={pickPicture}>
+                  <X
+                      name="camera"
+                      size={45}
+                      color="black"
+                      style={{
+                        
+                        justifyContent: 'flex-start',
+                        
+                      }}
+                    />
+                    </TouchableOpacity>
+                  <TouchableOpacity onPress={openPicker}>
+                  <Y
+                      name="images-outline"
+                      size={45}
+                      color="black"
+                      style={{
+                        
+                        
+                        
+                      }}
+                    />
+                    </TouchableOpacity>
+                    </View>
+                  
+                </View>
+              </View>
+            </Modal>
+            </TouchableWithoutFeedback>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
         </View>
     );
 }

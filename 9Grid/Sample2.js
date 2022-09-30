@@ -69,31 +69,30 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  Dimensions
+  Dimensions,ImageBackground
 } from 'react-native';
 // import {DynamicCollage, StaticCollage} from 'react-native-images-collage';
 import Header from '../9Grid/Header';
 import LinearGradient from 'react-native-linear-gradient';
+import {DynamicCollage, StaticCollage} from '@qeepsake/react-native-images-collage';
 
 const Swipe2 = ({props, route,navigation}) => {
   
-  const img = route.params.img;
+  const Gridimg = route.params.img;
+
+  // for 3rd cop image
   const items =route.params;
-  //   const sourcethree = [
-  //     (`data:${items.img.mime};base64,${items.img.data}`),
-  //     (`data:${items.img.mime};base64,${items.img.data}`),
-  //     (`data:${items.img.mime};base64,${items.img.data}`),
-  //   ];
-  const three= [  
+const three= [  
     (`data:${items.img.mime};base64,${items.img.data}`),  
     (`data:${items.img.mime};base64,${items.img.data}`),
     (`data:${items.img.mime};base64,${items.img.data}`), 
      ]
+// for 3rd cop image
 
   const collageRef = useRef(null);
   
   return (
-    <View
+    <ScrollView
       style={{
         backgroundColor: '#E4D9FB',
         height: Dimensions.get('window').height,
@@ -103,23 +102,29 @@ const Swipe2 = ({props, route,navigation}) => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}>
         <View style={style.card}>
-          <Header navigation={navigation} title="Swipe photo 2" />
+          <Header navigation={navigation} title="9 Grid" />
         </View>
       </LinearGradient>
-
-      {/* <ScrollView> */}
-        {/* <Header navigation={navigation} title="9 Grid" /> */}
-         {/* <ScrollView style={{width:320,top:10,margin:2}}> */}
+    
+ 
             <View style={{width:5,top:10,margin:2,width:10,height:500,marginRight:1000}}> 
               <StaticCollage style={{width:50,top:10,margin:2,width:10,height:500,marginRight:1000}}
-          width={320}
-     height={400}
-     images={img}
+              width={Dimensions.get('window').width}
+              height={Dimensions.get('window').height/1.5}
+     images={Gridimg}
      
  matrix={ [1,1] } /> 
 
        </View>
        {/* </ScrollView> */}
+       
+
+
+
+
+
+
+
 
         <View style={style.buttons}>
           <TouchableOpacity
@@ -150,7 +155,7 @@ const Swipe2 = ({props, route,navigation}) => {
             height: 50,
             left:60,
             borderRadius: 15,
-            bottom:45,
+            // bottom:45,
             alignItems: 'center',
             justifyContent: 'center',
         
@@ -170,8 +175,10 @@ const Swipe2 = ({props, route,navigation}) => {
             </Text>
           </TouchableOpacity>
         </View>
+
+
       {/* </ScrollView> */}
-    </View>
+    </ScrollView>
   );
 };
 
@@ -209,7 +216,7 @@ const style = StyleSheet.create({
   buttons:{
     // flex:1,
     flexDirection:'row',
-    bottom:40,
+    // bottom:40,
   },
 });
 export default Swipe2;

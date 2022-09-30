@@ -50,8 +50,8 @@ const [transferred, setTransferred] = useState(0);
     ImagePicker.openPicker({
         width: 300,
         height:500,
-        cropping: true,
-        cropperCircleOverlay:true,
+        cropping: false,
+        cropperCircleOverlay:false,
         cropperToolbarWidgetColor:"black",
         cropperToolbarColor :'#EFE4FB',
         cropperActiveWidgetColor:"blue",

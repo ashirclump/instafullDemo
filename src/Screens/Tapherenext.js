@@ -9,8 +9,11 @@ import {
   TextInput,
   SafeAreaView,
   TouchableOpacity,
+<<<<<<< HEAD
   Dimensions,
   ScrollView
+=======
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Screen from '../Components/Screen';
@@ -24,6 +27,7 @@ const [courseName, setCourseName] = useState ("")
 const onChangName = (value) => {
   setCourseName(value)
 }
+<<<<<<< HEAD
 const win = Dimensions.get('window');
 const copyIt = ()=> Clipboard.setString(courseName)
   return (
@@ -32,6 +36,14 @@ const copyIt = ()=> Clipboard.setString(courseName)
     <View style={{height:win.height,width:win.width}}>
     <LinearGradient colors={['#DDCEFF', '#F8DFF0']} style={{flex: 1}}>
 
+=======
+
+const copyIt = ()=> Clipboard.setString(courseName)
+  return (
+    <SafeAreaView>
+    <LinearGradient colors={['#DDCEFF', '#F8DFF0']} style={{flex: 1}}>
+      <View>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
         <View style={{top: 5, height: 58, borderWidth: 1, borderColor:'rgba(255, 255, 255, 0.32)'}}>
           <TouchableOpacity onPress={() => navigation.push('Tapherebio')}>
             <Image
@@ -155,7 +167,11 @@ left:230,
         </View>
         <View
           style={{
+<<<<<<< HEAD
             height: 150,
+=======
+            height: 180,
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
             borderWidth: 2,
             left: 12,
             top: 70,
@@ -163,12 +179,20 @@ left:230,
             width: 360,
             borderColor:'rgba(255, 255, 255, 0.32)',
           }}>
+<<<<<<< HEAD
           <TouchableOpacity style={{ alignSelf: 'center',}}>
+=======
+          <TouchableOpacity style={{ alignSelf: 'center', top: 30}}>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
             <Image
               source={require('../../assets/Images/imagepicker.png')}
               style={{ alignSelf: 'center', top: 30}}
             />
+<<<<<<< HEAD
             
+=======
+            <Screen title=" Tap to upload image"  />
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
           </TouchableOpacity>
           
             
@@ -176,12 +200,21 @@ left:230,
            
           
         </View>
+<<<<<<< HEAD
         
         <View style={{alignSelf: 'center',marginTop:'30%'}}>
         <Text style={{fontSize:15,color:'black',alignSelf:'center'}}> Follow us on</Text>
         <View style={{flexDirection: 'row', alignSelf: 'center'}}>
          
         <TouchableOpacity>
+=======
+
+        <View style={{top: 150, alignSelf: 'center'}}>
+          <Text>Follow us On</Text>
+        </View>
+        <View style={{flexDirection: 'row', alignSelf: 'center', top: 160}}>
+          <TouchableOpacity>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
             <Image
               source={require('../../assets/Images/yt2.png')}
               style={{left: -20}}
@@ -219,6 +252,7 @@ left:230,
             </View>
           </TouchableOpacity>
         </View>
+<<<<<<< HEAD
         </View>
 
         
@@ -233,6 +267,19 @@ left:230,
           backgroundColor: '#3672E9',
         }}>
           
+=======
+
+        <TouchableOpacity>
+          <View
+            style={{
+              top: 230,
+              height: 45,
+              width: 200,
+              alignSelf: 'center',
+              borderRadius: 15,
+              backgroundColor: '#3672E9',
+            }}>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
             <Text
               style={{
                 fontSize: 20,
@@ -242,12 +289,19 @@ left:230,
               }}>
               Publish
             </Text>
+<<<<<<< HEAD
       
         </TouchableOpacity>
       
     </LinearGradient>
     </View>
     </ScrollView>
+=======
+          </View>
+        </TouchableOpacity>
+      </View>
+    </LinearGradient>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
     </SafeAreaView>
   );
 };

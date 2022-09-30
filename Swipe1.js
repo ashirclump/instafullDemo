@@ -296,49 +296,55 @@ import LinearGradient from 'react-native-linear-gradient';
 // const Sample= ({props, route, navigation}) => {
 const win = Dimensions.get('window');
 const Swipe3 = ({props, route, navigation}) => {
+  
+  
   const items = route.params;
   const [Mypic, setMypic] = useState({
     uri: `data:${items.img.mime};base64,${items.img.data}`,
   });
 
-  //   const one =[
-  //    (`data:${items.img.mime};base64,${items.img.data}`)
-  //   ];
+ 
+ 
   const two = [
     `data:${items.img.mime};base64,${items.img.data}`,
     // `data:${items.img.mime};base64,${items.img.data}`,
   ]
   const three = [
-    // `data:${items.img.mime};base64,${items.img.data}`,
+    `data:${items.img.mime};base64,${items.img.data}`,
     `data:${items.img.mime};base64,${items.img.data}`,
     `data:${items.img.mime};base64,${items.img.data}`,
   ]
 
   return (
-    <View
+    <SafeAreaView
       style={{
         backgroundColor: '#E4D9FB',
-        height: Dimensions.get('window').height,
+        // height: Dimensions.get('window').height,
+        // margin:1
       }}>
-      <LinearGradient
-        colors={['#ffffff', '#E4D5F9']}
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}>
-        <View style={style.card}>
-          <Header navigation={navigation} title="Swip Photo 1" />
-        </View>
-      </LinearGradient>
-
-
-{/* <ScrollView style={{width:"100%", height:"100%"}} horizontal={true}> */}
       <View
         style={{
-          flexDirection: 'column',
-          bottom: 20,
-          // width: win.width / 1,
-          // height: win.height / 1.5,
+          backgroundColor: '#E4D9FB',
+          height: Dimensions.get('window').height,
         }}>
-         {/* <Image
+        <LinearGradient
+          colors={['#ffffff', '#E4D5F9']}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}>
+          <View style={style.card}>
+            <Header navigation={navigation} title="Swipe Photo" />
+          </View>
+        </LinearGradient>
+
+        {/* <ScrollView style={{width:"100%", height:"100%"}} horizontal={true}> */}
+        <View
+          style={{
+            flexDirection: 'column',
+            bottom: 20,
+            // width: win.width / 1,
+            // height: win.height / 1.5,
+          }}>
+          {/* <Image
           style={{
             // width: win.width / 3,
             // height: win.height / 1.5,
@@ -357,66 +363,70 @@ const Swipe3 = ({props, route, navigation}) => {
           }}
           source={Mypic}
         /> */}
-      </View>
-
-      <View
-        style={{
-          width: '100%',
-          height: '55%',
-          margin: 13,
-          marginTop: '15%',
-          flexDirection: 'row',
-        }}>
-        <Image source={Mypic} style={{height: '100%', width: '90%'}} />
-      </View>
-      <View>
-        <View style={style.buttons}>
-          <TouchableOpacity
-            // onPress= {(image => {  navigation.navigate ("Sample" ,{img : two }); })}
-            style={style.but}>
-            <Text style={style.butext}>1</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-             onPress= {(Mypic => {  navigation.navigate ("Swipe2" ,{imgg : Mypic }); })}
-            style={style.but}>
-            <Text style={style.butext}>2</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-          
-          onPress= {(Mypic => {  navigation.navigate ("Swipe3" ,{imggg : Mypic }); })}
-            style={style.but}>
-            <Text style={style.butext}>3</Text>
-          </TouchableOpacity>
         </View>
 
+        <View
+          style={{
+            width: '100%',
+            height: '55%',
+            margin: 13,
+            marginTop: '15%',
+            flexDirection: 'row',
+          }}>
+          <Image source={Mypic} style={{height: '100%', width: '90%'}} />
+        </View>
         <View>
-          <TouchableOpacity
-            style={{
-              alignItems: 'center',
-              borderRadius: 15,
-              backgroundColor: '#3672E9',
-              width: 200,
-              height: 50,
-              left: 60,
-              borderRadius: 15,
-              // bottom:45,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Text
+          <View style={style.buttons}>
+            <TouchableOpacity
+              // onPress= {(image => {  navigation.navigate ("Sample" ,{img : two }); })}
+              style={style.but}>
+              <Text style={style.butext}>1</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={Mypic => {
+                navigation.navigate('Swipe2', {imgg: two});
+              }}
+              style={style.but}>
+              <Text style={style.butext}>2</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={Mypic => {
+                navigation.navigate('Swipe3', {imggg: three});
+              }}
+              style={style.but}>
+              <Text style={style.butext}>3</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View>
+            <TouchableOpacity
               style={{
-                color: '#FFF',
-                fontSize: 18,
+                alignItems: 'center',
+                borderRadius: 15,
+                backgroundColor: '#3672E9',
+                width: 200,
+                height: 50,
+                left: 60,
+                borderRadius: 15,
+                // bottom:45,
+                alignItems: 'center',
+                justifyContent: 'center',
               }}>
-              Apply
-            </Text>
-          </TouchableOpacity>
+              <Text
+                style={{
+                  color: '#FFF',
+                  fontSize: 18,
+                }}>
+                Apply
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
+        {/* </ScrollView> */}
       </View>
-      {/* </ScrollView> */}
-    </View>
+    </SafeAreaView>
   );
 };
 

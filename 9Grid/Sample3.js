@@ -71,7 +71,7 @@ import {
   ScrollView,
   Dimensions
 } from 'react-native';
-// import { DynamicCollage, StaticCollage } from "react-native-images-collage";
+import {DynamicCollage, StaticCollage} from '@qeepsake/react-native-images-collage';
 import Header from '../9Grid/Header';
 import LinearGradient from 'react-native-linear-gradient';
 import { MatrixTransform } from 'react-native';
@@ -102,52 +102,29 @@ const Swipe3 = ({props, route,navigation}) => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}>
         <View style={style.card}>
-          <Header navigation={navigation} title="Swipe photo 3" />
+          <Header navigation={navigation} title="9 Grid" />
         </View>
       </LinearGradient>
 
       {/* <ScrollView> */}
         {/* <Header navigation={navigation} title="9 Grid" /> */}
          {/* <ScrollView style={{width:320,top:10,margin:2}}> */}
-            <View
-             style={{width:5,top:10,margin:2,width:10,height:500,marginRight:1000}}> 
+            <ScrollView
+            //  style={{width:50,top:10,margin:2,height:550,marginRight:1000}}
+             > 
             
             <StaticCollage 
               // style={{width:50,top:10,margin:2,width:10,height:500,marginRight:1000}}
-          width={320}
-     height={400}
+          width={Dimensions.get('window').width}
+     height={Dimensions.get('window').height/1.5}
      images={img}
-     
+    //  style={style.but}
  matrix={ [1,1,1] } /> 
 
-       </View>
+       </ScrollView>
 
       
-      {/* <View style={style.sectionContainer}>
-          <DynamicCollage
-            ref={collageRef}
-            // containerStyle={borderColor='red'}
-            width={340}
-            height={500}
-            images={three}
-            // replaceImage={source}
-            matrix={[1,2]}
-            const onEditButtonPress={(a, b) => {
-              collageRef.current.replaceImage(
-                `require('./Pic/boy.png')${(0 + Math.random() + 0).toFixed(
-                  0,
-                )}`,
-                a,
-                b,
-              );
-            }}
-            EditButtonComponent={() => {
-              return <View style={style.button} />;
-            }}
-            editButtonPosition={'bottom-right'}
-            isEditButtonVisible={false}
-          />
-        </View> */}
+    
 
         <View style={style.buttons}>
           <TouchableOpacity 

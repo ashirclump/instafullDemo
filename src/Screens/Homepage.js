@@ -11,15 +11,11 @@ import Dpsaverhead from '../Components/Dpsaverhead';
 import Hometab from '../Components/Hometab';
 import Test from '../Components/Test';
 
-// import { useContext } from 'react';
-// import NoteContext from '../../Context/NoteContext';
-
 
 
 
 const Card = (props) => {
-    // const {globalfont} = useContext(NoteContext);
-    // const [Ifont, setIfont] = globalfont;
+    
 
     const Ifont = 'Poplin';
 
@@ -93,7 +89,7 @@ const Homepage = ({ navigation, route }) => {
                 <LinearGradient colors={['#ffffff', '#ECDCF7']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.24)', borderBottomLeftRadius: 24, borderBottomRightRadius: 24, paddingHorizontal: 13, paddingTop: 35, paddingBottom: 14 }}>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
-                        <Text style={{ color: '#000', fontSize: 24, width: 245, marginLeft: 6, lineHeight: 27, height: 75 }}>What will you creat today ?</Text>
+                        <Text style={{ color: '#000', fontSize: 24, width: 245, marginLeft: 6, lineHeight: 27, height: 75}}>What will you create today ?</Text>
                         <TouchableOpacity onPress={()=>handleLougout()}>
                             <Image
                                 style={{ height: 52, width: 52, marginRight: 4 }}

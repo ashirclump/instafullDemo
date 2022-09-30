@@ -158,6 +158,7 @@ const Super = ({props, route,navigation}) => {
     // y:1
   }}
   // source={Mypic}
+  source={require('./Pic/whiteborder.png')}
 
 />
 <View style={{  width: '100%', height: '55%',margin:13, marginTop: '15%' ,flexDirection:'row',}}>

@@ -20,7 +20,7 @@ import Tapherebio from './src/Screens/Tapherebio';
 
 import Test from './src/Components/Test';
 import Imagecrop from './src/Screens/Imagecrop';
-import Tempupload from './src/Screens/Tempupload';
+
 import Sample2 from './9Grid/Sample2';
 // import Fbloginpage from './src/Screens/Fbloginpage';
 import Mylogin from './src/Screens/Mylogin';
@@ -44,12 +44,25 @@ import DpPick from './DP/DpPick';
 import Tapherenext from './src/Screens/Tapherenext';
 
 // 9gird
+<<<<<<< HEAD
 import Upload from './9Grid/Upload';
 import NoCropBox from './9Grid/NoCropBox';
 import Header from './9Grid/Header';
 
 import Sample3 from './9Grid/Sample3';
 import Dp2 from './DP/Dp2';
+=======
+import Upload from './9Grid/Upload'
+
+import Header from './9Grid/Header'
+
+
+
+import Sample3 from './9Grid/Sample3';
+import Dp2 from './DP/Dp2';
+import Tapherebio from './src/Screens/Tapherebio'
+import Tapherenext from './src/Screens/Tapherenext'
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 
 function HomeScreen({navigation}) {
   return (
@@ -81,6 +94,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
+<<<<<<< HEAD
       <Stack.Navigator initialRouteName="Uploadimage"
         screenOptions={{
           headerShown: false,
@@ -99,6 +113,22 @@ function App() {
         <Stack.Screen name="Tapherenext" component={Tapherenext} />
 
         <Stack.Screen name="Homepage" component={Homepage} />
+=======
+      <Stack.Navigator
+      // initialRouteName='UploadImage'
+      >
+      <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+      <Stack.Screen options={{ headerShown: false }} name="Dpcreator" component={Dpcreator} />
+      <Stack.Screen options={{ headerShown: false }} name="DpPick" component={DpPick} />
+      <Stack.Screen options={{ headerShown: false }} name="DpFinal" component={DpFinal} />
+      <Stack.Screen options={{ headerShown: false }} name="Signup" component={Signup} />
+      <Stack.Screen options={{ headerShown: false }} name="Forgot" component={Forgot} />
+      <Stack.Screen options={{ headerShown: false }} name="Reset" component={Reset} />
+      <Stack.Screen options={{ headerShown: false }} name="Otp" component={Otp} />
+      <Stack.Screen options={{ headerShown: false }} name="Tapherebio" component={Tapherebio} />
+      <Stack.Screen options={{ headerShown: false }} name="Tapherenext" component={Tapherenext} />
+      
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 
         <Stack.Screen name="Upload" component={Upload} />
 
@@ -140,7 +170,38 @@ function App() {
         <Stack.Screen name="Home2" component={Screen2} />
         <Stack.Screen name="Tapherebio" component={Tapherebio} />
 
+<<<<<<< HEAD
         {/* <Stack.Screen name="Otp" component={Otp} /> */}
+=======
+      <Stack.Screen options={{ headerShown: false }} name="Dpone" component={Dpone} />
+      <Stack.Screen options={{ headerShown: false }} name="DpTwo" component={DpTwo} />
+      <Stack.Screen options={{ headerShown: false }} name="Dp2" component={Dp2} />
+
+        <Stack.Screen options={{ headerShown: false }} name="Instalogin" component={Instalogin} />
+        {/* <Stack.Screen options={{ headerShown: false }} name="Flogin" component={Flogin} /> */}
+        <Stack.Screen options={{ headerShown: false }} name="Mylogin" component={Mylogin} />
+        <Stack.Screen options={{ headerShown: false }} name="Dpcreatortwo" component={Dpcreatortwo} />
+       
+        <Stack.Screen options={{ headerShown: false }} name="Dpcreateone" component={Dpcreateone} />
+        <Stack.Screen options={{ headerShown: false }} name="Uploadimage" component={Uploadimage} />
+        <Stack.Screen options={{ headerShown: false }} name="Imagecrop" component={Imagecrop} />
+        <Stack.Screen options={{ headerShown: false }} name="Test" component={Test} />
+        <Stack.Screen options={{ headerShown: false }} name="Sapceadder" component={Sapceadder} />
+        {/* <Stack.Screen options={{ headerShown: false }} name="Fbloginpage" component={Fbloginpage} /> */}
+        <Stack.Screen options={{ headerShown: false }} name="Imageviewer" component={Imageviewer} />
+        <Stack.Screen options={{ headerShown: false }} name="Nocropboxletterbox" component={Nocropboxletterbox} />
+        <Stack.Screen options={{ headerShown: false }} name="Creativefonts" component={Creativefonts} />
+        <Stack.Screen options={{ headerShown: false }} name="Dpsaverfour" component={Dpsaverfour} />
+        <Stack.Screen options={{ headerShown: false }} name="Dpsaverthree" component={Dpsaverthree} />
+        <Stack.Screen options={{ headerShown: false }} name="Dpsavertwo" component={Dpsavertwo} />
+        <Stack.Screen options={{ headerShown: false }} name="Dpsaverone" component={Dpsaverone} />
+        <Stack.Screen options={{ headerShown: false }} name="Home1" component={HomeScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="Home2" component={Screen2} />
+      {/* <Stack.Screen options={{ headerShown: false }} name="Otp" component={Otp} /> */}
+      
+      
+
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
       </Stack.Navigator>
     </NavigationContainer>
   );

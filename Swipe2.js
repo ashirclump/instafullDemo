@@ -74,18 +74,16 @@ import {
 import Header from './9Grid/Header';
 import LinearGradient from 'react-native-linear-gradient';
 import { Dimensions } from "react-native";
+import { Route } from '@react-navigation/native';
 const win = Dimensions.get('window');
 
-const Swipe2 = ({props, route,navigation}) => {
+const Swipe2 = ({props,route,navigation}) => {
+    // const items = route.params;
     const items = route.params;
-    const [Mypic, setMypic] =useState ({uri: `data:${items.imgg.mime};base64,${items.imgg.data}`});
+    const [Mypic, setMypic] =useState ({
+      uri: `data:${items.imgg.mime};base64,${items.imgg.data}`});
 
-    // const img = route.params.img;
-      // require('./Pic/boy.png');
-      // require('./Pic/boy.png');
-      // require('./Pic/boy.png');
-            // (`data:${items.img.mime};base64,${items.img.data}`);
-      //       // (`data:${items.img.mime};base64,${items.img.data}`),
+    
           
    
     return (
@@ -102,12 +100,12 @@ const Swipe2 = ({props, route,navigation}) => {
 
 <View>
         <View 
-      style={{flexDirection:'column',bottom:20,width: win.width/1,height: win.height/1.5}}>
+      style={{bottom:20,width: win.width/1,height: win.height/1.5}}>
     <Image
   style={{
-    width: 160,
+    width: 60,
     height: 400,
-    // borderWidth:9,
+    borderWidth:9,
     // flexWrap:'wrap',
     // flexDirection:"row",
     // resizeMode: 'stretch'
@@ -124,7 +122,7 @@ const Swipe2 = ({props, route,navigation}) => {
 
 />   
 <View style={{  width: '100%', height: '55%',margin:13, marginTop: '15%' ,flexDirection:'row',}}>
-                <Image source={Mypic} style={{ height: "100%", width: "90%" ,}} />
+                <Image source={{Mypic}} style={{ height: "100%", width: "90%" ,}} />
             </View>  
 <Image
   style={{

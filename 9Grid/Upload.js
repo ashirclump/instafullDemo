@@ -12,6 +12,7 @@ import {
 import Header from './Header';
 import LinearGradient from 'react-native-linear-gradient';
 import ImagePicker, {openPicker} from 'react-native-image-crop-picker';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Upload = ({navigation}) => {
   const Ifont = 'Poplin';
@@ -20,11 +21,11 @@ const Upload = ({navigation}) => {
       width: 300,
       height: 500,
       cropping: true,
-      cropperToolbarWidgetColor: 'black',
-      cropperToolbarColor: '#EFE4FB',
-      cropperActiveWidgetColor: 'blue',
+      // cropperToolbarWidgetColor: 'black',
+      // cropperToolbarColor: '#EFE4FB',
+      // cropperActiveWidgetColor: 'blue',
       freeStyleCropEnabled: true,
-      // hideBottomControls:true,
+      hideBottomControls:true,
       // showCropFrame :false,
       cropperToolbarTitle: '             9 Grid',
       // showCropGuidelinesColor :"black",
@@ -35,6 +36,11 @@ const Upload = ({navigation}) => {
   };
 
   return (
+    <SafeAreaView style={{
+      backgroundColor: '#E4D9FB',
+      height: Dimensions.get('window').height,
+      margin:5
+    }}>
     <View
       style={{
         backgroundColor: '#E4D9FB',
@@ -125,6 +131,7 @@ const Upload = ({navigation}) => {
         </TouchableOpacity>
       </View>
     </View>
+    </SafeAreaView>
   );
 };
 

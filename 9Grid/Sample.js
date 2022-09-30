@@ -107,6 +107,11 @@ const Swipe3 = ({props, route,navigation}) => {
   const collageRef = useRef(null);
   
   return (
+    <SafeAreaView style={{
+     
+      // height: Dimensions.get('window').height,
+      // margin:15
+    }}>
     <View
       style={{
         backgroundColor: '#E4D9FB',
@@ -117,20 +122,20 @@ const Swipe3 = ({props, route,navigation}) => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}>
         <View style={style.card}>
-          <Header navigation={navigation} title="Swipe photo 1" />
+          <Header navigation={navigation} title="9 Grid" />
         </View>
       </LinearGradient>
 
       {/* <ScrollView> */}
         {/* <Header navigation={navigation} title="9 Grid" /> */}
-         <ScrollView   >
+         <ScrollView  style={{marginBottom:80}} >
             {/* <View */}
              {/* style={{width:5,margin:2,width:10,height:500,marginRight:1000}}>  */}
             
             <StaticCollage 
               // style={{width:50,top:10,margin:2,width:10,height:500,marginRight:1000}}
-          width={350}
-     height={400}
+              width={Dimensions.get('window').width}
+              height={Dimensions.get('window').height/1.5}
      images={one}
     //  alignItems={center}
  matrix={ [3] } /> 
@@ -188,7 +193,7 @@ const Swipe3 = ({props, route,navigation}) => {
           </TouchableOpacity>
         </View>
 
-        <View>
+   
           <TouchableOpacity
             style={{
               alignItems: 'center',
@@ -198,7 +203,7 @@ const Swipe3 = ({props, route,navigation}) => {
               height: 50,
               left:60,
               borderRadius: 15,
-              // bottom:45,
+              bottom:45,
               alignItems: 'center',
               justifyContent: 'center',
             
@@ -213,8 +218,9 @@ const Swipe3 = ({props, route,navigation}) => {
           </TouchableOpacity>
           </View>
         </View>
-      {/* </ScrollView> */}
-    </View>
+     
+  
+    </SafeAreaView>
   );
 };
 
@@ -227,7 +233,7 @@ const style = StyleSheet.create({
     borderRadius: 15,
   },
   sectionContainer: {
-    marginTop: 3,
+    marginTop: 300,
     paddingHorizontal: 4,
     borderColor: 'red',
     borderWidth:1,
@@ -254,8 +260,8 @@ const style = StyleSheet.create({
     // flex:1,
     flexDirection:'row',
     justifyContent: 'space-evenly',
-    // bottom:10,
-    marginTop:10,
+    bottom:40,
+    marginTop:0,
     height:50,
   },
 });

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React, {useRef,useState} from 'react';
 // import {
 //   SafeAreaView,
@@ -667,6 +668,8 @@
 // //                       </ScrollView>
 // //                         )}}/>
 
+=======
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 import React, {useRef,useState} from 'react';
 import {
   SafeAreaView,
@@ -680,7 +683,11 @@ import {
   PermissionsAndroid,
   Alert,
   Platform,
+<<<<<<< HEAD
  
+=======
+  ImageBackground
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 } from 'react-native';
 
 import {captureRef} from 'react-native-view-shot';
@@ -688,8 +695,11 @@ import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import LinearGradient from 'react-native-linear-gradient';
 import Header from '../9Grid/Header';
 import Frame from '../src/Components/Frame';
+<<<<<<< HEAD
 import BigFrames from '../src/Components/BigFrames';
 import Badges from '../src/Components/Badges';
+=======
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 
 
 const Dp2 = ({route,navigation}) => {
@@ -701,6 +711,7 @@ const Dp2 = ({route,navigation}) => {
     uri: `data:${items.img.mime};base64,${items.img.data}`,
   });
   const [cropped,setCropped] = useState(0);
+<<<<<<< HEAD
   const [frames,setFrames] = useState();
   const [big,setBig]= useState();
   const [badg,setBadg] = useState();
@@ -937,6 +948,12 @@ const Dp2 = ({route,navigation}) => {
 
       const cropMe1 = () => {
         setCropped(215);
+=======
+
+
+      const cropMe1 = () => {
+        setCropped(200);
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
       };
 
   // get permission on android
@@ -1002,19 +1019,30 @@ const Dp2 = ({route,navigation}) => {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
+<<<<<<< HEAD
         <LinearGradient
         colors={['#ffffff', '#ECDCF7']}
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}>
+=======
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
          
+<<<<<<< HEAD
           
+=======
+          <LinearGradient
+        colors={['#ffffff', '#ECDCF7']}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
         <View style={{borderWidth:1.5, borderColor:'#F5E2F4'}}>
           <Header navigation={navigation} title="Dp Creator" />
         </View>
       
+<<<<<<< HEAD
       <View style={{width:414, height:415,justifyContent:'center',alignItems:'center', marginTop:'8%'}}>
             <View style={{justifyContent:'center',
             alignItems:'center',
@@ -1024,22 +1052,44 @@ const Dp2 = ({route,navigation}) => {
                 borderRadius:cropped}} ref={viewRef}>
            
               <Image source={userpic} resizeMode="cover" style={{width: 414, height: 415,
+=======
+      <View style={{width:'100%', height:414,justifyContent:'center',alignItems:'center', marginTop:'8%'}}>
+            <View style={{justifyContent:'center',
+            alignItems:'center',
+                width:'100%',
+                height: 390,
+                backgroundColor: 'grey',
+                borderRadius:cropped}} ref={viewRef}>
+           
+              <Image source={userpic} resizeMode="cover" style={{width: '100%', height: 390,
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
             borderRadius:cropped}}/>
               
              
               <TouchableOpacity 
               onPress={cropMe1}
+<<<<<<< HEAD
       style={{width:414,height:415 ,alignSelf:'center',position:'absolute',
      }}>
      <Image source={frames} style={{width:414,height:415}}/>
      <Image source={badg} style={{width:100,height:100,position:'absolute', 
             marginLeft:250, marginTop:315}}/>
+=======
+      style={{width:'100%',height: 390,alignSelf:'center',position:'absolute',
+      borderWidth:5, borderColor:'red',borderRadius:200, marginTop:'2%'}}
+      
+      >
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
         </TouchableOpacity> 
         
             </View>
             </View>
             
+<<<<<<< HEAD
           
+=======
+          </LinearGradient>
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
              
             <TouchableOpacity style={{ position:'absolute',
             backgroundColor: '#3672E9',marginLeft:'80%',width:30,marginTop:'5%',
@@ -1047,6 +1097,7 @@ const Dp2 = ({route,navigation}) => {
           }} onPress={downloadImage}>
               <Text style={{color:'white', fontSize:15,alignSelf:'center'}}>Done</Text>
             </TouchableOpacity>
+<<<<<<< HEAD
 
 
   {Option == true ? 
@@ -1318,7 +1369,41 @@ const Badgebtn = props => {
     );
   }
 };
+=======
+           <Frame/>
+        </ScrollView>
+        </SafeAreaView>
+    </>
+  );
+};
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 
+const styles = StyleSheet.create({
+  scrollView: {
+    // backgroundColor: '#F5E2F4',
+    height:'100%',
+    
+  },
 
+<<<<<<< HEAD
 
+=======
+  text: {
+    textAlign: 'center',
+  },
+  row: {
+    alignSelf: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '75%',
+  },
+  button: {
+   
+   
+   
+   
+   
+  },
+});
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 

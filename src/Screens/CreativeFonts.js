@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
+<<<<<<< HEAD
 import { View, StyleSheet, Text, Alert,ScrollView, TextInput, TouchableOpacity, FlatList, Dimensions } from 'react-native';
+=======
+import { View, StyleSheet, Text, Alert ,ScrollView, TextInput, TouchableOpacity, FlatList, Dimensions } from 'react-native';
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 import Header from '../Components/Header';
 import LinearGradient from 'react-native-linear-gradient';
 import Clipboard from '@react-native-clipboard/clipboard';
@@ -61,7 +65,11 @@ const Creativefonts = ({navigation}) => {
     );
 
     const onPress = () => {
+<<<<<<< HEAD
         // Alertt();
+=======
+        Alertt();
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
         copyIt();
       };
     const Ifont = 'Poplin';
@@ -103,7 +111,11 @@ const onChangName = (value) => {
                     <View style={{ paddingLeft: 25, paddingRight: 30, marginTop: 28.5 }}>
                         <View style={{ backgroundColor: '#000', height: 40, flexDirection: 'row', alignItems: 'center', borderRadius: 5 }}>
                             <View style={{ width: '100%', paddingHorizontal: 16 }}>
+<<<<<<< HEAD
                                 
+=======
+                                {/* <TextInput placeholder="Write something cool" placeholderTextColor="#fff" style={{ borderRadius: 5, width: '100%', color: '#fff', fontSize: 12, fontFamily: 'Poppins', fontWeight: '300', }} ></TextInput> */}
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
                                 <TextInput value={courseName} onChangeText={onChangName} placeholder="Write something cool" placeholderTextColor="#fff" style={{ borderRadius: 5, width: '100%', color: '#fff', fontSize: 12, fontFamily: `${ Tryfont }`, fontWeight: '300', }} ></TextInput>
                             </View>
                         </View>
@@ -130,7 +142,11 @@ const onChangName = (value) => {
                     <View style={{ position: 'absolute', bottom: 90, width: '100%' }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
                             <View style={{ backgroundColor: '#3672E9', height: 59, borderRadius: 15, paddingHorizontal: 93, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+<<<<<<< HEAD
       
+=======
+                                {/* <TouchableOpacity onPress={()=>{setIfont(Tryfont)}}> */}
+>>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
                                 <TouchableOpacity onPress={onPress}>
                                     <Text style={{ fontFamily: `${ Ifont }`, fontSize: 18, color: '#fff', width: '100%', fontWeight: '400' }}>Copy Text</Text>
                                 </TouchableOpacity>
