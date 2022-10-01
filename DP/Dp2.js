@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // import React, {useRef,useState} from 'react';
 // import {
 //   SafeAreaView,
@@ -668,8 +667,6 @@
 // //                       </ScrollView>
 // //                         )}}/>
 
-=======
->>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 import React, {useRef,useState} from 'react';
 import {
   SafeAreaView,
@@ -683,11 +680,7 @@ import {
   PermissionsAndroid,
   Alert,
   Platform,
-<<<<<<< HEAD
  
-=======
-  ImageBackground
->>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 } from 'react-native';
 
 import {captureRef} from 'react-native-view-shot';
@@ -695,11 +688,8 @@ import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import LinearGradient from 'react-native-linear-gradient';
 import Header from '../9Grid/Header';
 import Frame from '../src/Components/Frame';
-<<<<<<< HEAD
 import BigFrames from '../src/Components/BigFrames';
 import Badges from '../src/Components/Badges';
-=======
->>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 
 
 const Dp2 = ({route,navigation}) => {
@@ -711,7 +701,6 @@ const Dp2 = ({route,navigation}) => {
     uri: `data:${items.img.mime};base64,${items.img.data}`,
   });
   const [cropped,setCropped] = useState(0);
-<<<<<<< HEAD
   const [frames,setFrames] = useState();
   const [big,setBig]= useState();
   const [badg,setBadg] = useState();
@@ -948,12 +937,6 @@ const Dp2 = ({route,navigation}) => {
 
       const cropMe1 = () => {
         setCropped(215);
-=======
-
-
-      const cropMe1 = () => {
-        setCropped(200);
->>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
       };
 
   // get permission on android
@@ -1019,30 +1002,19 @@ const Dp2 = ({route,navigation}) => {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-<<<<<<< HEAD
         <LinearGradient
         colors={['#ffffff', '#ECDCF7']}
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}>
-=======
->>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
          
-<<<<<<< HEAD
           
-=======
-          <LinearGradient
-        colors={['#ffffff', '#ECDCF7']}
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}>
->>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
         <View style={{borderWidth:1.5, borderColor:'#F5E2F4'}}>
           <Header navigation={navigation} title="Dp Creator" />
         </View>
       
-<<<<<<< HEAD
       <View style={{width:414, height:415,justifyContent:'center',alignItems:'center', marginTop:'8%'}}>
             <View style={{justifyContent:'center',
             alignItems:'center',
@@ -1052,44 +1024,22 @@ const Dp2 = ({route,navigation}) => {
                 borderRadius:cropped}} ref={viewRef}>
            
               <Image source={userpic} resizeMode="cover" style={{width: 414, height: 415,
-=======
-      <View style={{width:'100%', height:414,justifyContent:'center',alignItems:'center', marginTop:'8%'}}>
-            <View style={{justifyContent:'center',
-            alignItems:'center',
-                width:'100%',
-                height: 390,
-                backgroundColor: 'grey',
-                borderRadius:cropped}} ref={viewRef}>
-           
-              <Image source={userpic} resizeMode="cover" style={{width: '100%', height: 390,
->>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
             borderRadius:cropped}}/>
               
              
               <TouchableOpacity 
               onPress={cropMe1}
-<<<<<<< HEAD
       style={{width:414,height:415 ,alignSelf:'center',position:'absolute',
      }}>
      <Image source={frames} style={{width:414,height:415}}/>
      <Image source={badg} style={{width:100,height:100,position:'absolute', 
             marginLeft:250, marginTop:315}}/>
-=======
-      style={{width:'100%',height: 390,alignSelf:'center',position:'absolute',
-      borderWidth:5, borderColor:'red',borderRadius:200, marginTop:'2%'}}
-      
-      >
->>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
         </TouchableOpacity> 
         
             </View>
             </View>
             
-<<<<<<< HEAD
           
-=======
-          </LinearGradient>
->>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
              
             <TouchableOpacity style={{ position:'absolute',
             backgroundColor: '#3672E9',marginLeft:'80%',width:30,marginTop:'5%',
@@ -1097,7 +1047,6 @@ const Dp2 = ({route,navigation}) => {
           }} onPress={downloadImage}>
               <Text style={{color:'white', fontSize:15,alignSelf:'center'}}>Done</Text>
             </TouchableOpacity>
-<<<<<<< HEAD
 
 
   {Option == true ? 
@@ -1182,228 +1131,199 @@ const styles = StyleSheet.create({
 export default Dp2;
 
 
-const Framebtn = props => {
-  if (props.Option == true) {
-    return (
-      <>
-        <View
-          style={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <LinearGradient
-            colors={['#A83882', '#DA3150', '#FA5539']}
-            start={{x: 0.0, y: 1.0}}
-            end={{x: 1.0, y: 0.0}}
-            style={{
-              height: 36,
-              width: 36,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: 82 / 2,
-            }}>
-            <View
-              style={{
-                margin: 4,
-                padding: 2.8,
-                backgroundColor: '#F3EAFD',
-                borderRadius: 82 / 2,
-              }}>
-              <LinearGradient
-                colors={['#A83882', '#DA3150', '#FA5539']}
-                start={{x: 0.0, y: 1.0}}
-                end={{x: 1.0, y: 0.0}}
-                style={{
-                  height: 27,
-                  width: 27,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRadius: 82 / 2,
-                }}></LinearGradient>
-            </View>
-          </LinearGradient>
-          <Text style={{color: '#DA3150'}}>Frames</Text>
-        </View>
-      </>
-    );
-  } 
-  else {
-    return (
-      <>
-        <View
-          style={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'black',
-          }}>
-          <View
-            style={{
-              backgroundColor: '#797979',
-              height: 36,
-              width: 36,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: 82 / 2,
-            }}>
-            <View
-              style={{
-                margin: 4,
-                padding: 2.8,
-                backgroundColor: '#F3EAFD',
-                borderRadius: 82 / 2,
-              }}>
-              <View
-                style={{
-                  backgroundColor: '#797979',
-                  height: 27,
-                  width: 27,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRadius: 82 / 2,
-                }}></View>
-            </View>
-          </View>
+// const Framebtn = props => {
+//   if (props.Option == true) {
+//     return (
+//       <>
+//         <View
+//           style={{
+//             flexDirection: 'column',
+//             alignItems: 'center',
+//             justifyContent: 'center',
+//           }}>
+//           <LinearGradient
+//             colors={['#A83882', '#DA3150', '#FA5539']}
+//             start={{x: 0.0, y: 1.0}}
+//             end={{x: 1.0, y: 0.0}}
+//             style={{
+//               height: 36,
+//               width: 36,
+//               alignItems: 'center',
+//               justifyContent: 'center',
+//               borderRadius: 82 / 2,
+//             }}>
+//             <View
+//               style={{
+//                 margin: 4,
+//                 padding: 2.8,
+//                 backgroundColor: '#F3EAFD',
+//                 borderRadius: 82 / 2,
+//               }}>
+//               <LinearGradient
+//                 colors={['#A83882', '#DA3150', '#FA5539']}
+//                 start={{x: 0.0, y: 1.0}}
+//                 end={{x: 1.0, y: 0.0}}
+//                 style={{
+//                   height: 27,
+//                   width: 27,
+//                   alignItems: 'center',
+//                   justifyContent: 'center',
+//                   borderRadius: 82 / 2,
+//                 }}></LinearGradient>
+//             </View>
+//           </LinearGradient>
+//           <Text style={{color: '#DA3150'}}>Frames</Text>
+//         </View>
+//       </>
+//     );
+//   } 
+//   else {
+//     return (
+//       <>
+//         <View
+//           style={{
+//             flexDirection: 'column',
+//             alignItems: 'center',
+//             justifyContent: 'center',
+//             color: 'black',
+//           }}>
+//           <View
+//             style={{
+//               backgroundColor: '#797979',
+//               height: 36,
+//               width: 36,
+//               alignItems: 'center',
+//               justifyContent: 'center',
+//               borderRadius: 82 / 2,
+//             }}>
+//             <View
+//               style={{
+//                 margin: 4,
+//                 padding: 2.8,
+//                 backgroundColor: '#F3EAFD',
+//                 borderRadius: 82 / 2,
+//               }}>
+//               <View
+//                 style={{
+//                   backgroundColor: '#797979',
+//                   height: 27,
+//                   width: 27,
+//                   alignItems: 'center',
+//                   justifyContent: 'center',
+//                   borderRadius: 82 / 2,
+//                 }}></View>
+//             </View>
+//           </View>
 
-          <Text style={{textAlign: 'center', color: '#797979', fontSize: 13}}>
-            Frames
-          </Text>
+//           <Text style={{textAlign: 'center', color: '#797979', fontSize: 13}}>
+//             Frames
+//           </Text>
           
-        </View>
-      </>
-    );
-  }
-};
+//         </View>
+//       </>
+//     );
+//   }
+// };
 
-const Badgebtn = props => {
-  if (props.Option == true) {
-    return (
-      <>
-        <View
-          style={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <View
-            style={{
-              height: 36,
-              width: 36,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: 82 / 2,
-              borderWidth: 1.5,
-              borderColor: '#797979',
-              borderRadius: 200,
-            }}>
-            <Image
-              style={{height: 36, width: 36}}
-              source={require('../Badges/badge1.png')}
-            />
-          </View>
-        </View>
-        <Text style={{textAlign: 'center', color: '#797979', fontSize: 13}}>
-          Badges & Emojis
-        </Text>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <View
-          style={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <LinearGradient
-            colors={['#A83882', '#DA3150', '#FA5539']}
-            start={{x: 0.0, y: 1.0}}
-            end={{x: 1.0, y: 0.0}}
-            style={{
-              height: 36,
-              width: 36,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: 82 / 2,
-            }}>
-            <View
-              style={{
-                margin: 4,
-                padding: 2.8,
-                backgroundColor: '#F3EAFD',
-                borderRadius: 82 / 2,
-              }}>
-              <LinearGradient
-                colors={['#A83882', '#DA3150', '#FA5539']}
-                start={{x: 0.0, y: 1.0}}
-                end={{x: 1.0, y: 0.0}}
-                style={{
-                  height: 27,
-                  width: 27,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRadius: 82 / 2,
-                }}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: '#6C99F6',
-                    height: 23,
-                    width: 23,
-                    borderRadius: 82 / 2,
-                  }}>
-                  <Image
-                    style={{height: 15, width: 15}}
-                    source={require('../Badges/badge1.png')}
-                  />
-                </View>
-              </LinearGradient>
-            </View>
-          </LinearGradient>
-        </View>
-      </>
-    );
-  }
-};
-=======
-           <Frame/>
-        </ScrollView>
-        </SafeAreaView>
-    </>
-  );
-};
->>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
+// const Badgebtn = props => {
+//   if (props.Option == true) {
+//     return (
+//       <>
+//         <View
+//           style={{
+//             flexDirection: 'column',
+//             alignItems: 'center',
+//             justifyContent: 'center',
+//           }}>
+//           <View
+//             style={{
+//               height: 36,
+//               width: 36,
+//               alignItems: 'center',
+//               justifyContent: 'center',
+//               borderRadius: 82 / 2,
+//               borderWidth: 1.5,
+//               borderColor: '#797979',
+//               borderRadius: 200,
+//             }}>
+//             <Image
+//               style={{height: 36, width: 36}}
+//               source={require('../Badges/badge1.png')}
+//             />
+//           </View>
+//         </View>
+//         <Text style={{textAlign: 'center', color: '#797979', fontSize: 13}}>
+//           Badges & Emojis
+//         </Text>
+//       </>
+//     );
+//   } else {
+//     return (
+//       <>
+//         <View
+//           style={{
+//             flexDirection: 'column',
+//             alignItems: 'center',
+//             justifyContent: 'center',
+//           }}>
+//           <LinearGradient
+//             colors={['#A83882', '#DA3150', '#FA5539']}
+//             start={{x: 0.0, y: 1.0}}
+//             end={{x: 1.0, y: 0.0}}
+//             style={{
+//               height: 36,
+//               width: 36,
+//               alignItems: 'center',
+//               justifyContent: 'center',
+//               borderRadius: 82 / 2,
+//             }}>
+//             <View
+//               style={{
+//                 margin: 4,
+//                 padding: 2.8,
+//                 backgroundColor: '#F3EAFD',
+//                 borderRadius: 82 / 2,
+//               }}>
+//               <LinearGradient
+//                 colors={['#A83882', '#DA3150', '#FA5539']}
+//                 start={{x: 0.0, y: 1.0}}
+//                 end={{x: 1.0, y: 0.0}}
+//                 style={{
+//                   height: 27,
+//                   width: 27,
+//                   alignItems: 'center',
+//                   justifyContent: 'center',
+//                   borderRadius: 82 / 2,
+//                 }}>
+//                 <View
+//                   style={{
+//                     flexDirection: 'row',
+//                     justifyContent: 'center',
+//                     alignItems: 'center',
+//                     backgroundColor: '#6C99F6',
+//                     height: 23,
+//                     width: 23,
+//                     borderRadius: 82 / 2,
+//                   }}>
+//                   <Image
+//                     style={{height: 15, width: 15}}
+//                     source={require('../Badges/badge1.png')}
+//                   />
+//                 </View>
+//               </LinearGradient>
+//             </View>
+//           </LinearGradient>
+//         </View>
+//       </>
+//     );
+//   }
+// };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    // backgroundColor: '#F5E2F4',
-    height:'100%',
+// const styles = StyleSheet.create({
+//   scrollView: {
+//     // backgroundColor: '#F5E2F4',
+//     height:'100%',
     
-  },
+//   },
 
-<<<<<<< HEAD
-
-=======
-  text: {
-    textAlign: 'center',
-  },
-  row: {
-    alignSelf: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '75%',
-  },
-  button: {
-   
-   
-   
-   
-   
-  },
-});
->>>>>>> 9989bb335f2492d40437cc39dc8e321f3276ad96
 

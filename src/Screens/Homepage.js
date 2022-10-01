@@ -165,7 +165,7 @@ const Toolkit = (props) => {
                 <Card navigation={props.navigation} navItem={"Creativefonts"} img={require("../../assets/Homepi/hme5.png")} title="Creative font" />
                 <Card navigation={props.navigation} navItem={"SwipePick"} img={require("../../assets/Homepi/hme6.png")} title="Swipe Photo" />
                 <Card navigation={props.navigation} navItem={"Uploadimage"} img={require("../../assets/Homepi/hme7.png")} title="No crop post" />
-                <Card navigation={props.navigation} navItem={"Dpsaverone"} img={require("../../assets/Homepi/hme8.png")} title="Repost" />
+                <Card navigation={props.navigation} navItem={"RepostUpload"} img={require("../../assets/Homepi/hme8.png")} title="Repost" />
             </View>
 
         </>

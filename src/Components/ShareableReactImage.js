@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Platform,
   Linking,
+  Image,
 } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
 import Share from 'react-native-share';
@@ -33,7 +34,7 @@ const ShareableReactImage = () => {
         quality: 0.7,
       });
       if (showInstagramStory) {
-        await Share.shareSingle({
+        await Share.open({
           stickerImage: uri,
           method: Share.InstagramStories.SHARE_STICKER_IMAGE,
           social: Share.Social.INSTAGRAM_STORIES,
@@ -60,7 +61,11 @@ const ShareableReactImage = () => {
           }}>
           Don't be a dummy!
         </Text>
-        <View style={styles.dummy}></View>
+        <View style={styles.dummy}>
+        <Image style={{height:40,width:40}}
+        source= {require('../../assets/Homepi/hme9.png')}/>
+        
+        </View>
         <Text
           style={{
             fontSize: 26,
